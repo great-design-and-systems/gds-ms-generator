@@ -99,7 +99,8 @@
                     "faculty_service",
                     "time_service",
                     "student_service"
-                ]
+                ],
+                "port": "9000:3000"
             }
         ]
     }

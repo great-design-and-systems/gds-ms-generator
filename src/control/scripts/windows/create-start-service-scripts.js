@@ -22,6 +22,9 @@ function execute(config, callback) {
                 }
 
             }
+            if (service.port) {
+                shCalls += '-p ' + service.port + ' ';
+            }
             shCalls += lodash.get(service.parameters, '#DOMAIN_SERVICE') + ':' + lodash.get(service.parameters, '#IMAGE_SERVICE_TAG');
 
             createFile(servicePath, shCalls, function (err) {
