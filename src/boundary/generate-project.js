@@ -16,6 +16,7 @@ var CreateRestartAllUnixScript = require('../control/scripts/unix/create-restart
 var CreateRestartAllWindowsScript = require('../control/scripts/windows/create-restart-all-scripts');
 var CreateUpdateAllUnixScript = require('../control/scripts/unix/create-update-all-scripts');
 var CreateUpdateAllWindowsScript = require('../control/scripts/windows/create-update-all-scripts');
+var CreateStartServiceWindowsScript = require('../control/scripts/windows/create-start-service-scripts');
 
 module.exports = function () {
     new GetGdsMsConfig(function (err, config) {
@@ -74,7 +75,14 @@ function createWindowsScripts(config, callback) {
                                                 if (!err) {
                                                     new CreateUpdateAllWindowsScript(config, function (err, batCalls) {
                                                         if (!err) {
-                                                            callback();
+                                                            new CreateStartServiceWindowsScript(config, function (err, batCalls) {
+                                                                if (!err) {
+                                                                    callback();
+                                                                } else {
+                                                                    console.error('CreateStartServiceWindowsScript', err);
+                                                                    callback(err);
+                                                                }
+                                                            });
                                                         } else {
                                                             console.error('CreateUpdateAllWindowsScript', err);
                                                             callback(err);

@@ -5,7 +5,6 @@
     "windows/restart.bat": "templates/scripts/windows/restart.bat",
     "windows/start.bat": "templates/scripts/windows/start.bat",
     "windows/start-db.bat": "templates/scripts/windows/start-db.bat",
-    "windows/start-service.bat": "templates/scripts/windows/start-service.bat",
     "windows/stop.bat": "templates/scripts/windows/stop.bat",
     "windows/stop-db.bat": "templates/scripts/windows/stop-db.bat",
     "windows/stop-service.bat": "templates/scripts/windows/stop-service.bat",

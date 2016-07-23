@@ -5,7 +5,6 @@
     "unix/restart.sh": "templates/scripts/unix/restart.sh",
     "unix/start.sh": "templates/scripts/unix/start.sh",
     "unix/start-db.sh": "templates/scripts/unix/start-db.sh",
-    "unix/start-service.sh": "templates/scripts/unix/start-service.sh",
     "unix/stop.sh": "templates/scripts/unix/stop.sh",
     "unix/stop-db.sh": "templates/scripts/unix/stop-db.sh",
     "unix/stop-service.sh": "templates/scripts/unix/stop-service.sh",

@@ -1,1 +1,1 @@
-docker run -d -v #DBPATH:/data/db --name=#DOMAIN_DB #DOMAIN_DB mongod
+docker run -d -v #DBPATH:/data/db --name=#DOMAIN_DB #DOMAIN_DB:#IMAGE_DB_TAG mongod
