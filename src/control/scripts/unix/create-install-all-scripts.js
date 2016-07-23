@@ -6,8 +6,10 @@ function execute(config, callback) {
     var shCalls = '';
     new IterateService(config.containers.services,
         function (service, done) {
-            var servicePath = path.join(service.name, 'unix', 'install.sh');
-            shCalls += 'sh ' + servicePath + '\n';
+            var servicePath = path.join(service.name, 'unix');
+            shCalls += 'cd ' + servicePath + '\n';
+            shCalls += 'sh install.sh\n';
+            shCalls += 'cd ' + service.outputPath;
             done();
         }, function (err) {
             if (err) {
