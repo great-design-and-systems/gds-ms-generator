@@ -57,7 +57,7 @@
             {
                 "name": "time-service",
                 "parameters": {
-                    "#DOMAIN_DB": "time_dn",
+                    "#DOMAIN_DB": "time_db",
                     "#DOMAIN_SERVICE": "time_service",
                     "#DBPATH": "/output/time-db/",
                     "#LOGPATH": "/output/time-log/",
