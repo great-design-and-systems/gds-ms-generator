@@ -9,7 +9,7 @@ function execute(config, callback) {
             var servicePath = path.join(config.path, service.name, 'unix');
             shCalls += 'cd ' + servicePath + '\n';
             shCalls += 'sh install.sh\n';
-            shCalls += 'cd ' + service.outputPath;
+            shCalls += 'cd ' + config.path + '\n';
             done();
         }, function (err) {
             if (err) {

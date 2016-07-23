@@ -6,8 +6,10 @@ function execute(config, callback) {
     var shCalls = '';
     new IterateService(config.containers.services,
         function (service, done) {
-            var servicePath = path.join(service.name, 'unix', 'restart.sh');
-            shCalls += 'sh ' + servicePath + '\n';
+            var servicePath = path.join(config.path, service.name, 'unix');
+            shCalls += 'cd ' + servicePath + '\n';
+            shCalls += 'sh restart.sh\n';
+            shCalls += 'cd ' + config.path + '\n';
             done();
         }, function (err) {
             if (err) {

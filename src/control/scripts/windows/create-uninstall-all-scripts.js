@@ -6,8 +6,10 @@ function execute(config, callback) {
     var shCalls = '';
     new IterateService(config.containers.services,
         function (service, done) {
-            var servicePath = path.join(service.name, 'windows', 'uninstall.bat');
-            shCalls += 'call ' + servicePath + '\n';
+            var servicePath = path.join(config.path, service.name, 'windows');
+            shCalls += 'cd ' + servicePath + '\n';
+            shCalls += 'call uninstall.bat\n';
+            shCalls += 'cd ' + config.path + '\n';
             done();
         }, function (err) {
             if (err) {
