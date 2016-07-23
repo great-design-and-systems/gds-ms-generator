@@ -1,0 +1,18 @@
+{
+    "unix/install.sh": "templates/scripts/unix/install.sh",
+    "unix/install-db.sh": "templates/scripts/unix/install-db.sh",
+    "unix/install-service.sh": "templates/scripts/unix/install-service.sh",
+    "unix/restart.sh": "templates/scripts/unix/restart.sh",
+    "unix/start.sh": "templates/scripts/unix/start.sh",
+    "unix/start-db.sh": "templates/scripts/unix/start-db.sh",
+    "unix/start-service.sh": "templates/scripts/unix/start-service.sh",
+    "unix/stop.sh": "templates/scripts/unix/stop.sh",
+    "unix/stop-db.sh": "templates/scripts/unix/stop-db.sh",
+    "unix/stop-service.sh": "templates/scripts/unix/stop-service.sh",
+    "unix/uninstall.sh": "templates/scripts/unix/uninstall.sh",
+    "unix/uninstall-db.sh": "templates/scripts/unix/uninstall-db.sh",
+    "unix/uninstall-service.sh": "templates/scripts/unix/uninstall-service.sh",
+    "unix/update.sh": "templates/scripts/unix/update.sh",
+    "unix/update-db.sh": "templates/scripts/unix/update-db.sh",
+    "unix/update-service.sh": "templates/scripts/unix/update-service.sh"
+}

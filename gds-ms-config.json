@@ -1,0 +1,70 @@
+{
+    "name": "gds-ms-project",
+    "path": "./output",
+    "containers": {
+        "templates": {
+            "dockerTemplateFile": "./templates/docker-template.json",
+            "scripts": {
+                "windowScriptsTemplateFile": "./templates/scripts-windows-template.json",
+                "unixScriptsTemplateFile": "./templates/scripts-unix-template.json"
+            }
+        },
+        "services": [
+            {
+                "name": "user-service",
+                "parameters": {
+                    "#DOMAIN_DB": "user_db",
+                    "#DOMAIN_SERVICE": "user_service",
+                    "#DBPATH": "./output/user-service/db/",
+                    "#LOGPATH": "./output/user-service/log/",
+                    "#REPO": "https://github.com/great-design-and-systems/user-service.git",
+                    "#MAINTAINER": "rickzx98@gmail.com"
+                }
+            },
+            {
+                "name": "security-service",
+                "parameters": {
+                    "#DOMAIN_DB": "security_db",
+                    "#DOMAIN_SERVICE": "security_service",
+                    "#DBPATH": "./output/security-db/",
+                    "#LOGPATH": "./output/security-log/",
+                    "#REPO": "https://github.com/great-design-and-systems/security-service.git",
+                    "#MAINTAINER": "rickzx98@gmail.com"
+                }
+            },
+            {
+                "name": "faculty-service",
+                "parameters": {
+                    "#DOMAIN_DB": "faculty_db",
+                    "#DOMAIN_SERVICE": "faculty_service",
+                    "#DBPATH": "./output/faculty-db/",
+                    "#LOGPATH": "./output/faculty-log/",
+                    "#REPO": "https://github.com/great-design-and-systems/faculty-service.git",
+                    "#MAINTAINER": "rickzx98@gmail.com"
+                }
+            },
+            {
+                "name": "student-service",
+                "parameters": {
+                    "#DOMAIN_DB": "student_db",
+                    "#DOMAIN_SERVICE": "student_service",
+                    "#DBPATH": "./output/student-db/",
+                    "#LOGPATH": "./output/student-log/",
+                    "#REPO": "https://github.com/great-design-and-systems/student-service.git",
+                    "#MAINTAINER": "rickzx98@gmail.com"
+                }
+            },
+            {
+                "name": "time-service",
+                "parameters": {
+                    "#DOMAIN_DB": "time_dn",
+                    "#DOMAIN_SERVICE": "time_service",
+                    "#DBPATH": "./output/time-db/",
+                    "#LOGPATH": "./output/time-log/",
+                    "#REPO": "https://github.com/great-design-and-systems/time-service.git",
+                    "#MAINTAINER": "rickzx98@gmail.com"
+                }
+            }
+        ]
+    }
+}

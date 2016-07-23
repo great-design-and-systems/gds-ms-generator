@@ -1,0 +1,1 @@
+docker build -t="#DOMAIN_DB" ../db/.

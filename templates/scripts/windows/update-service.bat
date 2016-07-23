@@ -1,0 +1,1 @@
+docker exec #DOMAIN_SERVICE git pull

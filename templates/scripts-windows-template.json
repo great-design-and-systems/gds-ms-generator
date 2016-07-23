@@ -1,0 +1,18 @@
+{
+    "windows/install.bat": "templates/scripts/windows/install.bat",
+    "windows/install-db.bat": "templates/scripts/windows/install-db.bat",
+    "windows/install-service.bat": "templates/scripts/windows/install-service.bat",
+    "windows/restart.bat": "templates/scripts/windows/restart.bat",
+    "windows/start.bat": "templates/scripts/windows/start.bat",
+    "windows/start-db.bat": "templates/scripts/windows/start-db.bat",
+    "windows/start-service.bat": "templates/scripts/windows/start-service.bat",
+    "windows/stop.bat": "templates/scripts/windows/stop.bat",
+    "windows/stop-db.bat": "templates/scripts/windows/stop-db.bat",
+    "windows/stop-service.bat": "templates/scripts/windows/stop-service.bat",
+    "windows/uninstall.bat": "templates/scripts/windows/uninstall.bat",
+    "windows/uninstall-db.bat": "templates/scripts/windows/uninstall-db.bat",
+    "windows/uninstall-service.bat": "templates/scripts/windows/uninstall-service.bat",
+    "windows/update.bat": "templates/scripts/windows/update.bat",
+    "windows/update-db.bat": "templates/scripts/windows/update-db.bat",
+    "windows/update-service.bat": "templates/scripts/windows/update-service.bat"
+}

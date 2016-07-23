@@ -1,0 +1,4 @@
+{
+    "db/Dockerfile": "templates/dockerfiles/db/Dockerfile",
+    "Dockerfile": "templates/dockerfiles/Dockerfile"
+}

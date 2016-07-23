@@ -1,0 +1,32 @@
+{
+  "name": "#NAME",
+  "version": "#VERSION",
+  "description": "#DESCRIPTION",
+  "main": "file-preloader.js",
+  "scripts": {
+    "test": "mocha tests --recursive --watch"
+  },
+  "keywords": [
+    "file",
+    "preloader"
+  ],
+  "author": {
+    "name": "Jerico de Guzman"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "mock-fs": "^3.8.0"
+  },
+  "dependencies": {
+    "fs-extra": "^0.28.0",
+    "jsonfile": "^2.3.0",
+    "lodash": "^4.11.1"
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "file-preloader@1.0.0",
+  "_shasum": "b6829f31d55c75583f43e87e9704b3baf1ef5c96",
+  "_from": "modules\\file-preloader",
+  "_resolved": "file:modules\\file-preloader"
+}
