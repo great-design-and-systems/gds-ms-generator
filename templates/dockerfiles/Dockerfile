@@ -1,4 +1,4 @@
-FROM rickzx98/gds-ms:0.1
+FROM rickzx98/gds-ms:#IMAGE_SERVICE_TAG
 MAINTAINER #MAINTAINER
 RUN apt-get update
 RUN git clone #REPO /host

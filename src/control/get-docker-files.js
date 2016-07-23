@@ -13,6 +13,8 @@ function preloadServiceDockerfile(templateFile, servicePath, parameters, callbac
     filePreloader.putText('#REPO', lodash.get(parameters, '#REPO'));
     filePreloader.putText('#DOMAIN_DB', lodash.get(parameters, '#DOMAIN_DB'));
     filePreloader.putText('#MAINTAINER', lodash.get(parameters, '#MAINTAINER'));
+    filePreloader.putText('#IMAGE_DB_TAG', lodash.get(parameters, '#IMAGE_DB_TAG'));
+    filePreloader.putText('#IMAGE_SERVICE_TAG', lodash.get(parameters, '#IMAGE_SERVICE_TAG'));
     filePreloader.readTemplate(function (err) {
         console.log('readTemplate', err);
         callback({
