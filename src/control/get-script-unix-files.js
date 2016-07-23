@@ -14,6 +14,8 @@ function preloadUnixScripts(templateFile, servicePath, parameters, callback) {
     filePreloader.putText('#DOMAIN_DB', lodash.get(parameters, '#DOMAIN_DB'));
     filePreloader.putText('#DBPATH', lodash.get(parameters, '#DBPATH'));
     filePreloader.putText('#LOGPATH', lodash.get(parameters, '#LOGPATH'));
+    filePreloader.putText('#IMAGE_DB_TAG', lodash.get(parameters, '#IMAGE_DB_TAG'));
+    filePreloader.putText('#IMAGE_SERVICE_TAG', lodash.get(parameters, '#IMAGE_SERVICE_TAG'));
     filePreloader.readTemplate(function (err) {
         console.log('unix', err);
         callback({
