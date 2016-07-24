@@ -16,6 +16,7 @@ var CreateRestartAllUnixScript = require('../control/scripts/unix/create-restart
 var CreateRestartAllWindowsScript = require('../control/scripts/windows/create-restart-all-scripts');
 var CreateUpdateAllUnixScript = require('../control/scripts/unix/create-update-all-scripts');
 var CreateUpdateAllWindowsScript = require('../control/scripts/windows/create-update-all-scripts');
+var CreateStartServiceUnixScript = require('../control/scripts/unix/create-start-service-scripts');
 var CreateStartServiceWindowsScript = require('../control/scripts/windows/create-start-service-scripts');
 
 module.exports = function () {
@@ -136,7 +137,14 @@ function createUnixScripts(config, callback) {
                                                 if (!err) {
                                                     new CreateUpdateAllUnixScript(config, function (err, shCalls) {
                                                         if (!err) {
-                                                            callback();
+                                                            new CreateStartServiceUnixScript(config, function (err, shCalls) {
+                                                                if (!err) {
+                                                                    callback();
+                                                                } else {
+                                                                    console.error('CreateStartServiceUnixScript', err);
+                                                                    callback(err);
+                                                                }
+                                                            });
                                                         } else {
                                                             console.error('CreateUpdateAllUnixScript', err);
                                                             callback(err);
