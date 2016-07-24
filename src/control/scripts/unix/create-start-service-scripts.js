@@ -4,9 +4,9 @@ var path = require('path');
 var lodash = require('lodash');
 
 function execute(config, callback) {
-    var shCalls = '';
     new IterateService(config.containers.services,
         function (service, done) {
+            var shCalls = '';
             var servicePath = path.join(config.path, service.name, 'unix');
             shCalls += 'docker run -d ';
             shCalls += '-v ' + lodash.get(service.parameters, '#LOGPATH') + ':/app/log ';
@@ -16,18 +16,21 @@ function execute(config, callback) {
             }
             var links = service.links;
             if (links && links.length) {
+                var link = '';
                 for (var li = 0; li < links.length; li++) {
                     shCalls += '--link=' + links[li] + ':' + links[li] + ' ';
                 }
+
             }
             if (service.port) {
                 shCalls += '-p ' + service.port + ' ';
             }
             shCalls += lodash.get(service.parameters, '#DOMAIN_SERVICE') + ':' + lodash.get(service.parameters, '#IMAGE_SERVICE_TAG');
+
             createFile(servicePath, shCalls, function (err) {
                 if (err) {
                     callback({
-                        message: 'Failed to create start.sh for service ' + service.name
+                        message: 'Failed to create start-service.sh for service ' + service.name
                     })
                 } else {
                     done();

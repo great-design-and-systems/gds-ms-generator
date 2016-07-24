@@ -30,7 +30,7 @@ function execute(config, callback) {
             createFile(servicePath, shCalls, function (err) {
                 if (err) {
                     callback({
-                        message: 'Failed to create start.bat for service ' + service.name
+                        message: 'Failed to create start-service.bat for service ' + service.name
                     })
                 } else {
                     done();
