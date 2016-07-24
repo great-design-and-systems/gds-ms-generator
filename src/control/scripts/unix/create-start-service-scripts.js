@@ -7,7 +7,7 @@ function execute(config, callback) {
     new IterateService(config.containers.services,
         function (service, done) {
             var shCalls = '';
-            var servicePath = path.join(config.path, service.name, 'unix');
+            var servicePath = config.path + '/' + service.name + '/unix';
             shCalls += 'docker run -d ';
             shCalls += '-v ' + lodash.get(service.parameters, '#LOGPATH') + ':/app/log ';
             shCalls += '--name=' + lodash.get(service.parameters, '#DOMAIN_SERVICE') + ' ';
