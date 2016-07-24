@@ -1,1 +1,1 @@
-docker build -t="#DOMAIN_SERVICE" ..
+docker build -t #DOMAIN_SERVICE:#IMAGE_SERVICE_TAG ..

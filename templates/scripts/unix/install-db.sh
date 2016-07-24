@@ -1,1 +1,1 @@
-docker build -t="#DOMAIN_DB" ../db/.
+docker build -t #DOMAIN_DB:#IMAGE_DB_TAG ../db/.
