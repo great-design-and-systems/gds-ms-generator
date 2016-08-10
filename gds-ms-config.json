@@ -112,8 +112,8 @@
                 "priority": "10",
                 "name": "school-config-service",
                 "parameters": {
-                    "#DOMAIN_DB": "school-config_db",
-                    "#DOMAIN_SERVICE": "school-config_service",
+                    "#DOMAIN_DB": "school_config_db",
+                    "#DOMAIN_SERVICE": "school_config_service",
                     "#DBPATH": "/output/school-config-db/",
                     "#LOGPATH": "/output/school-config-log/",
                     "#REPO": "https://github.com/great-design-and-systems/school-config-service.git",
@@ -141,9 +141,9 @@
                     "faculty_service",
                     "time_service",
                     "student_service",
-                    "file-service",
-                    "export-service",
-                    "school-config-service"
+                    "file_service",
+                    "export_service",
+                    "school_config_service"
                 ],
                 "port": "9000:3000"
             }
