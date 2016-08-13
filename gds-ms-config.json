@@ -21,7 +21,8 @@
                     "#REPO": "https://github.com/great-design-and-systems/user-service.git",
                     "#MAINTAINER": "rickzx98@gmail.com",
                     "#IMAGE_SERVICE_TAG": "0.1",
-                    "#IMAGE_DB_TAG": "0.1"
+                    "#IMAGE_DB_TAG": "0.1",
+                    "#SCHOOL_CONFIG_SERVICE_PORT": "NONE"
                 }
             },
             {
@@ -35,7 +36,8 @@
                     "#REPO": "https://github.com/great-design-and-systems/security-service.git",
                     "#MAINTAINER": "rickzx98@gmail.com",
                     "#IMAGE_SERVICE_TAG": "0.1",
-                    "#IMAGE_DB_TAG": "0.1"
+                    "#IMAGE_DB_TAG": "0.1",
+                    "#SCHOOL_CONFIG_SERVICE_PORT": "NONE"
                 }
             },
             {
@@ -49,7 +51,8 @@
                     "#REPO": "https://github.com/great-design-and-systems/faculty-service.git",
                     "#MAINTAINER": "rickzx98@gmail.com",
                     "#IMAGE_SERVICE_TAG": "0.1",
-                    "#IMAGE_DB_TAG": "0.1"
+                    "#IMAGE_DB_TAG": "0.1",
+                    "#SCHOOL_CONFIG_SERVICE_PORT": "NONE"
                 }
             },
             {
@@ -63,7 +66,8 @@
                     "#REPO": "https://github.com/great-design-and-systems/student-service.git",
                     "#MAINTAINER": "rickzx98@gmail.com",
                     "#IMAGE_SERVICE_TAG": "0.1",
-                    "#IMAGE_DB_TAG": "0.1"
+                    "#IMAGE_DB_TAG": "0.1",
+                    "#SCHOOL_CONFIG_SERVICE_PORT": "NONE"
                 }
             },
             {
@@ -77,7 +81,8 @@
                     "#REPO": "https://github.com/great-design-and-systems/time-service.git",
                     "#MAINTAINER": "rickzx98@gmail.com",
                     "#IMAGE_SERVICE_TAG": "0.1",
-                    "#IMAGE_DB_TAG": "0.1"
+                    "#IMAGE_DB_TAG": "0.1",
+                    "#SCHOOL_CONFIG_SERVICE_PORT": "NONE"
                 }
             },
             {
@@ -91,7 +96,8 @@
                     "#REPO": "https://github.com/great-design-and-systems/file-service.git",
                     "#MAINTAINER": "rickzx98@gmail.com",
                     "#IMAGE_SERVICE_TAG": "0.1",
-                    "#IMAGE_DB_TAG": "0.1"
+                    "#IMAGE_DB_TAG": "0.1",
+                    "#SCHOOL_CONFIG_SERVICE_PORT": "NONE"
                 }
             },
             {
@@ -105,21 +111,8 @@
                     "#REPO": "https://github.com/great-design-and-systems/export-service.git",
                     "#MAINTAINER": "rickzx98@gmail.com",
                     "#IMAGE_SERVICE_TAG": "0.1",
-                    "#IMAGE_DB_TAG": "0.1"
-                }
-            },
-            {
-                "priority": "10",
-                "name": "school-config-service",
-                "parameters": {
-                    "#DOMAIN_DB": "school_config_db",
-                    "#DOMAIN_SERVICE": "school_config_service",
-                    "#DBPATH": "/output/school-config-db/",
-                    "#LOGPATH": "/output/school-config-log/",
-                    "#REPO": "https://github.com/great-design-and-systems/school-config-service.git",
-                    "#MAINTAINER": "rickzx98@gmail.com",
-                    "#IMAGE_SERVICE_TAG": "0.1",
-                    "#IMAGE_DB_TAG": "0.1"
+                    "#IMAGE_DB_TAG": "0.1",
+                    "#SCHOOL_CONFIG_SERVICE_PORT": "NONE"
                 }
             },
             {
@@ -133,7 +126,8 @@
                     "#REPO": "https://github.com/great-design-and-systems/gds-ms-api.git",
                     "#MAINTAINER": "rickzx98@gmail.com",
                     "#IMAGE_SERVICE_TAG": "0.1",
-                    "#IMAGE_DB_TAG": "0.1"
+                    "#IMAGE_DB_TAG": "0.1",
+                    "#SCHOOL_CONFIG_SERVICE_PORT": "https://school-config-service.herokuapp.com"
                 },
                 "links": [
                     "user_service",
