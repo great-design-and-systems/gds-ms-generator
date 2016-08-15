@@ -136,8 +136,7 @@
                     "time_service",
                     "student_service",
                     "file_service",
-                    "export_service",
-                    "school_config_service"
+                    "export_service"
                 ],
                 "port": "9000:3000"
             }
