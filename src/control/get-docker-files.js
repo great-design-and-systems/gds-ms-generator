@@ -15,12 +15,13 @@ function preloadServiceDockerfile(templateFile, servicePath, parameters, callbac
     filePreloader.putText('#MAINTAINER', lodash.get(parameters, '#MAINTAINER'));
     filePreloader.putText('#IMAGE_DB_TAG', lodash.get(parameters, '#IMAGE_DB_TAG'));
     filePreloader.putText('#IMAGE_SERVICE_TAG', lodash.get(parameters, '#IMAGE_SERVICE_TAG'));
-    filePreloader.readTemplate(function (err) {
+    filePreloader.putText('#SCHOOL_CONFIG_SERVICE_PORT', lodash.get(parameters, '#SCHOOL_CONFIG_SERVICE_PORT'));
+    filePreloader.readTemplate(function(err) {
         console.log('readTemplate', err);
         callback({
             message: 'Error preloading dockerfiles from template ' + templateFile
         });
-    }, function () {
+    }, function() {
         callback(undefined);
     });
 }
@@ -34,7 +35,7 @@ function iterateServiceDockerfileCreation(config, callback, index) {
     if (index < services.length) {
         var service = services[index];
         var servicePath = path.join(config.path, service.name);
-        preloadServiceDockerfile(config.containers.templates.dockerTemplateFile, servicePath, service.parameters, function (errPreloaderServiceDockerfile) {
+        preloadServiceDockerfile(config.containers.templates.dockerTemplateFile, servicePath, service.parameters, function(errPreloaderServiceDockerfile) {
             if (errPreloaderServiceDockerfile) {
                 callback({
                     message: 'Error loading dockerfile for service ' + service.name
