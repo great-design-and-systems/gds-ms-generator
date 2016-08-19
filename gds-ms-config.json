@@ -151,6 +151,36 @@
                 "import_service"
             ],
             "port": "9000:3000"
+        }, {
+            "priority": "0",
+            "name": "gds-terminal",
+            "parameters": {
+                "#DOMAIN_DB": "gds_terminal_db",
+                "#DOMAIN_SERVICE": "gds_terminal",
+                "#DBPATH": "/output/gds-terminal/db/",
+                "#LOGPATH": "/output/gds-terminal/log/",
+                "#REPO": "https://github.com/great-design-and-systems/gds-terminal.git",
+                "#MAINTAINER": "rickzx98@gmail.com",
+                "#IMAGE_SERVICE_TAG": "0.1",
+                "#IMAGE_DB_TAG": "0.1",
+                "#SCHOOL_CONFIG_SERVICE_PORT": "none"
+            },
+            "port": "9005:3000"
+        }, {
+            "priority": "0",
+            "name": "gds-lrts",
+            "parameters": {
+                "#DOMAIN_DB": "gds_lrts_db",
+                "#DOMAIN_SERVICE": "gds_lrts",
+                "#DBPATH": "/output/gds-lrts/db/",
+                "#LOGPATH": "/output/gds-lrts/log/",
+                "#REPO": "https://github.com/great-design-and-systems/gds-lrts.git",
+                "#MAINTAINER": "rickzx98@gmail.com",
+                "#IMAGE_SERVICE_TAG": "0.1",
+                "#IMAGE_DB_TAG": "0.1",
+                "#SCHOOL_CONFIG_SERVICE_PORT": "none"
+            },
+            "port": "9006:3000"
         }]
     }
 }
