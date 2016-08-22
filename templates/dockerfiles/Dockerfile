@@ -6,6 +6,7 @@ RUN git clone #REPO /host && \
 WORKDIR /host
 RUN npm install
 ENV PORT 3000
+ENV APP_LOG /app/log
 ENV DB_HOST #DOMAIN_DB
 ENV DB #DOMAIN_DB
 ENV DB_TEST #DOMAIN_DB_TEST
