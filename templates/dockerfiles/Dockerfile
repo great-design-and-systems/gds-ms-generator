@@ -1,6 +1,9 @@
 FROM rickzx98/gds-ms:#IMAGE_SERVICE_TAG
 MAINTAINER #MAINTAINER
-RUN apt-get update
+RUN git config --global http.proxy proxy.assumption.edu.ph:3128 && \
+    git config --global https.proxy proxy.assumption.edu.ph.3128 && \
+    npm config set proxy "http://proxy.assumption.edu.ph:3128" && \
+    npm config set https-proxy "http://proxy.assumption.edu.ph:3128"
 RUN git clone #REPO /host && \
     npm config set logfd /app/log
 WORKDIR /host
