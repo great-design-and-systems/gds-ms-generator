@@ -1,4 +1,3 @@
 {
-    "db/Dockerfile": "templates/dockerfiles/db/Dockerfile",
-    "Dockerfile": "templates/dockerfiles/Dockerfile"
+    "db/Dockerfile": "templates/dockerfiles/db/Dockerfile"
 }

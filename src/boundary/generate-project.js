@@ -18,7 +18,7 @@ var CreateUpdateAllUnixScript = require('../control/scripts/unix/create-update-a
 var CreateUpdateAllWindowsScript = require('../control/scripts/windows/create-update-all-scripts');
 var CreateStartServiceUnixScript = require('../control/scripts/unix/create-start-service-scripts');
 var CreateStartServiceWindowsScript = require('../control/scripts/windows/create-start-service-scripts');
-
+var CreateServiceDocker = require('../control/create-service-docker');
 module.exports = function () {
     new GetGdsMsConfig(function (err, config) {
         if (!err) {
@@ -26,17 +26,23 @@ module.exports = function () {
                 if (!outputFolderErr) {
                     new CreateServiceFolder(config, function (err) {
                         if (!err) {
-                            new GetDockerfiles(config, function (err) {
+                            new CreateServiceDocker(config, function (err, serviceDocker) {
                                 if (!err) {
-                                    createScripts(config, function (err) {
+                                    new GetDockerfiles(config, serviceDocker, function (err) {
                                         if (!err) {
+                                            createScripts(config, function (err) {
+                                                if (!err) {
 
+                                                } else {
+                                                    console.error('createScripts', err);
+                                                }
+                                            });
                                         } else {
-                                            console.error('createScripts', err);
+                                            console.error('GetDockerfiles', err);
                                         }
                                     });
                                 } else {
-                                    console.error('GetDockerfiles', err);
+                                    console.error('CreateDockerFiles', err);
                                 }
                             });
                         }
