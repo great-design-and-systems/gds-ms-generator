@@ -32,7 +32,7 @@ module.exports = function () {
                                         if (!err) {
                                             createScripts(config, function (err) {
                                                 if (!err) {
-
+                                                    console.log('done');
                                                 } else {
                                                     console.error('createScripts', err);
                                                 }

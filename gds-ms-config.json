@@ -149,6 +149,7 @@
             {
                 "priority": "5",
                 "name": "gds-ts-api",
+                "database": false,
                 "parameters": {
                     "#DOMAIN_DB": "gds_ts_db",
                     "#DOMAIN_SERVICE": "gds_ts_service",
@@ -177,6 +178,7 @@
             {
                 "priority": "4",
                 "name": "gds-terminal",
+                "database": false,
                 "parameters": {
                     "#DOMAIN_DB": "gds_terminal_db",
                     "#DOMAIN_SERVICE": "gds_terminal",
@@ -192,6 +194,7 @@
             {
                 "priority": "3",
                 "name": "gds-lrts",
+                "database": false,
                 "parameters": {
                     "#DOMAIN_DB": "gds_lrts_db",
                     "#DOMAIN_SERVICE": "gds_lrts",

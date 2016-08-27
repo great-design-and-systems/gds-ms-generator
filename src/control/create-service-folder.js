@@ -26,28 +26,45 @@ function createServiceFolder(outputFolder, service, callback) {
     var servicePathWin = path.join(servicePath, 'windows');
     var servicePathUnix = path.join(servicePath, 'unix');
     var servicePathDB = path.join(servicePath, 'db');
-    
+
     createFolder(servicePath, 'failed to create service folder ' + service.name, function (errService) {
         if (!errService) {
-            createFolder(servicePathDB, 'failed to create db folder for service ' + service.name, function (errDB) {
-                if (errDB) {
-                    callback(errDB);
-                } else {
-                    createFolder(servicePathWin, 'failed to create windows folder for service ' + service.name, function (errWin) {
-                        if (errWin) {
-                            callback(errWin);
-                        } else {
-                            createFolder(servicePathUnix, 'failed to create unix folder for service ' + service.name, function (errWin) {
-                                if (errWin) {
-                                    callback(errWin);
-                                } else {
-                                    callback(undefined);
-                                }
-                            });
-                        }
-                    });
-                }
-            });
+            if (!service.database || !!service.database) {
+                createFolder(servicePathDB, 'failed to create db folder for service ' + service.name, function (errDB) {
+                    if (errDB) {
+                        callback(errDB);
+                    } else {
+                        createFolder(servicePathWin, 'failed to create windows folder for service ' + service.name, function (errWin) {
+                            if (errWin) {
+                                callback(errWin);
+                            } else {
+                                createFolder(servicePathUnix, 'failed to create unix folder for service ' + service.name, function (errWin) {
+                                    if (errWin) {
+                                        callback(errWin);
+                                    } else {
+                                        callback(undefined);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            } else {
+                createFolder(servicePathWin, 'failed to create windows folder for service ' + service.name, function (errWin) {
+                    if (errWin) {
+                        callback(errWin);
+                    } else {
+                        createFolder(servicePathUnix, 'failed to create unix folder for service ' + service.name, function (errWin) {
+                            if (errWin) {
+                                callback(errWin);
+                            } else {
+                                callback(undefined);
+                            }
+                        });
+                    }
+                });
+            }
+
         } else {
             callback(errService);
         }

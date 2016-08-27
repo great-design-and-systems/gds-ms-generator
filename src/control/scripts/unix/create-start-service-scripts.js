@@ -2,6 +2,7 @@ var fs = require('node-fs');
 var IterateService = require('../../common/iterate-services');
 var path = require('path');
 var lodash = require('lodash');
+var AddServiceEnv = require('../add-service-env');
 
 function execute(config, callback) {
     new IterateService(config.containers.services,
@@ -11,7 +12,7 @@ function execute(config, callback) {
             shCalls += 'docker run -d ';
             shCalls += '-v ' + lodash.get(service.parameters, '#LOGPATH') + ':/app/log ';
             shCalls += '--name=' + lodash.get(service.parameters, '#DOMAIN_SERVICE') + ' ';
-            if (lodash.get(service.parameters, '#DOMAIN_DB')) {
+            if (lodash.get(service.parameters, '#DOMAIN_DB') && (!service.database || !!service.database)) {
                 shCalls += '--link=' + lodash.get(service.parameters, '#DOMAIN_DB') + ':' + lodash.get(service.parameters, '#DOMAIN_DB') + ' ';
             }
             var links = service.links;
@@ -25,17 +26,36 @@ function execute(config, callback) {
             if (service.port) {
                 shCalls += '-p ' + service.port + ' ';
             }
-            shCalls += lodash.get(service.parameters, '#DOMAIN_SERVICE') + ':' + lodash.get(service.parameters, '#IMAGE_SERVICE_TAG');
+            if (service.environments) {
+                new AddServiceEnv(shCalls, service.environments, function (err, shCallsEnv) {
+                    if (!err) {
+                        shCalls = shCallsEnv;
+                        shCalls += lodash.get(service.parameters, '#DOMAIN_SERVICE') + ':' + lodash.get(service.parameters, '#IMAGE_SERVICE_TAG');
+                        createFile(servicePath, shCalls, function (err) {
+                            if (err) {
+                                callback({
+                                    message: 'Failed to create start-service.sh for service ' + service.name
+                                })
+                            } else {
+                                done();
+                            }
+                        });
+                    }
+                });
+            } else {
+                shCalls += lodash.get(service.parameters, '#DOMAIN_SERVICE') + ':' + lodash.get(service.parameters, '#IMAGE_SERVICE_TAG');
+                createFile(servicePath, shCalls, function (err) {
+                    if (err) {
+                        callback({
+                            message: 'Failed to create start-service.sh for service ' + service.name
+                        })
+                    } else {
+                        done();
+                    }
+                });
+            }
 
-            createFile(servicePath, shCalls, function (err) {
-                if (err) {
-                    callback({
-                        message: 'Failed to create start-service.sh for service ' + service.name
-                    })
-                } else {
-                    done();
-                }
-            });
+
         }, function (err) {
             if (err) {
                 callback({
