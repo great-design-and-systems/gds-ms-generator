@@ -24,7 +24,7 @@
             "ENV[5]": "DB_PORT 27017",
             "ENV[6]": "DB_PORT_TEST 27017",
             "ENV[7]": "DB_HOST_TEST #DOMAIN_DB",
-            "CMD": "npm run container",
+            "CMD": "npm start",
             "EXPOSE": "3000"
         },
         "services": [

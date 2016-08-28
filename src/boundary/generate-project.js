@@ -19,6 +19,9 @@ var CreateUpdateAllWindowsScript = require('../control/scripts/windows/create-up
 var CreateStartServiceUnixScript = require('../control/scripts/unix/create-start-service-scripts');
 var CreateStartServiceWindowsScript = require('../control/scripts/windows/create-start-service-scripts');
 var CreateServiceDocker = require('../control/create-service-docker');
+var CreateUpdateUnixScript = require('../control/scripts/unix/create-update-script');
+var CreateUpdateWindowsScript = require('../control/scripts/windows/create-update-script');
+
 module.exports = function () {
     new GetGdsMsConfig(function (err, config) {
         if (!err) {
@@ -84,7 +87,13 @@ function createWindowsScripts(config, callback) {
                                                         if (!err) {
                                                             new CreateStartServiceWindowsScript(config, function (err, batCalls) {
                                                                 if (!err) {
-                                                                    callback();
+                                                                    new CreateUpdateWindowsScript(config, function (err, batCalls) {
+                                                                        if (!err) {
+                                                                            callback();
+                                                                        } else {
+                                                                            console.error('CreateUpdateWindowsScript', err);
+                                                                        }
+                                                                    });
                                                                 } else {
                                                                     console.error('CreateStartServiceWindowsScript', err);
                                                                     callback(err);
@@ -145,7 +154,13 @@ function createUnixScripts(config, callback) {
                                                         if (!err) {
                                                             new CreateStartServiceUnixScript(config, function (err, shCalls) {
                                                                 if (!err) {
-                                                                    callback();
+                                                                    new CreateUpdateUnixScript(config, function (err, shCalls) {
+                                                                        if (!err) {
+                                                                            callback();
+                                                                        } else {
+                                                                            console.error('CreateUpdateUnixScript', err);
+                                                                        }
+                                                                    });
                                                                 } else {
                                                                     console.error('CreateStartServiceUnixScript', err);
                                                                     callback(err);

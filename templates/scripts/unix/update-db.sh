@@ -1,1 +1,0 @@
-docker exec #DOMAIN_DB git pull
