@@ -1,3 +1,3 @@
 sh stop.sh;
-sh update-db.sh
-sh update-service.sh
+sh start-db.sh;
+sh update-service.sh;
