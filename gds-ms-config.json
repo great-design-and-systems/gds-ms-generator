@@ -1,6 +1,6 @@
 {
     "name": "gds-ms-project",
-    "path": "/home/rickzx98/output",
+    "path": "/home/gds-server/output",
     "containers": {
         "templates": {
             "dockerTemplateFile": "./templates/docker-template.json",
@@ -33,21 +33,21 @@
             "name": "user-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "user_service",
-                "#DBPATH": "/home/rickzx98/output/user-db/",
+                "#DBPATH": "/home/gds-server/output/user-db/",
                 "#REPO": "https://github.com/great-design-and-systems/user-service.git",
                 "#MAINTAINER": "rickzx98@gmail.com",
                 "#IMAGE_SERVICE_TAG": "0.1",
                 "#IMAGE_DB_TAG": "0.1"
             },
             "mounts": {
-                "/app/log": "/home/rickzx98/output/user-log/"
+                "/app/log": "/home/gds-server/output/user-log/"
             }
         }, {
             "priority": "10",
             "name": "security-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "security_service",
-                "#DBPATH": "/home/rickzx98/output/security-db/",
+                "#DBPATH": "/home/gds-server/output/security-db/",
                 "#REPO": "https://github.com/great-design-and-systems/security-service.git",
                 "#MAINTAINER": "rickzx98@gmail.com",
                 "#IMAGE_SERVICE_TAG": "0.1",
@@ -55,84 +55,84 @@
                 "#SCHOOL_CONFIG_SERVICE_PORT": "NONE"
             },
             "mounts": {
-                "/app/log": "/home/rickzx98/output/security-log/"
+                "/app/log": "/home/gds-server/output/security-log/"
             }
         }, {
             "priority": "10",
             "name": "faculty-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "faculty_service",
-                "#DBPATH": "/home/rickzx98/output/faculty-db/",
+                "#DBPATH": "/home/gds-server/output/faculty-db/",
                 "#REPO": "https://github.com/great-design-and-systems/faculty-service.git",
                 "#MAINTAINER": "rickzx98@gmail.com",
                 "#IMAGE_SERVICE_TAG": "0.1",
                 "#IMAGE_DB_TAG": "0.1"
             },
             "mounts": {
-                "/app/log": "/home/rickzx98/output/faculty-log/"
+                "/app/log": "/home/gds-server/output/faculty-log/"
             }
         }, {
             "priority": "10",
             "name": "student-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "student_service",
-                "#DBPATH": "/home/rickzx98/output/student-db/",
+                "#DBPATH": "/home/gds-server/output/student-db/",
                 "#REPO": "https://github.com/great-design-and-systems/student-service.git",
                 "#MAINTAINER": "rickzx98@gmail.com",
                 "#IMAGE_SERVICE_TAG": "0.1",
                 "#IMAGE_DB_TAG": "0.1"
             },
             "mounts": {
-                "/app/log": "/home/rickzx98/output/student-log/"
+                "/app/log": "/home/gds-server/output/student-log/"
             }
         }, {
             "priority": "10",
             "name": "time-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "time_service",
-                "#DBPATH": "/home/rickzx98/output/time-db/",
+                "#DBPATH": "/home/gds-server/output/time-db/",
                 "#REPO": "https://github.com/great-design-and-systems/time-service.git",
                 "#MAINTAINER": "rickzx98@gmail.com",
                 "#IMAGE_SERVICE_TAG": "0.1",
                 "#IMAGE_DB_TAG": "0.1"
             },
             "mounts": {
-                "/app/log": "/home/rickzx98/output/time-log/"
+                "/app/log": "/home/gds-server/output/time-log/"
             }
         }, {
             "priority": "10",
             "name": "file-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "file_service",
-                "#DBPATH": "/home/rickzx98/output/file-db/",
+                "#DBPATH": "/home/gds-server/output/file-db/",
                 "#REPO": "https://github.com/great-design-and-systems/file-service.git",
                 "#MAINTAINER": "rickzx98@gmail.com",
                 "#IMAGE_SERVICE_TAG": "0.1",
                 "#IMAGE_DB_TAG": "0.1"
             },
             "mounts": {
-                "/app/log": "/home/rickzx98/output/file-log/"
+                "/app/log": "/home/gds-server/output/file-log/"
             }
         }, {
             "priority": "10",
             "name": "export-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "export_service",
-                "#DBPATH": "/home/rickzx98/output/export-db/",
+                "#DBPATH": "/home/gds-server/output/export-db/",
                 "#REPO": "https://github.com/great-design-and-systems/export-service.git",
                 "#MAINTAINER": "rickzx98@gmail.com",
                 "#IMAGE_SERVICE_TAG": "0.1",
                 "#IMAGE_DB_TAG": "0.1"
             },
             "mounts": {
-                "/app/log": "/home/rickzx98/output/export-log/"
+                "/app/log": "/home/gds-server/output/export-log/"
             }
         }, {
             "priority": "10",
             "name": "import-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "import_service",
-                "#DBPATH": "/home/rickzx98/output/import-db/",
+                "#DBPATH": "/home/gds-server/output/import-db/",
                 "#REPO": "https://github.com/great-design-and-systems/import-service.git",
                 "#MAINTAINER": "rickzx98@gmail.com",
                 "#IMAGE_SERVICE_TAG": "0.1",
@@ -144,7 +144,7 @@
                 "file_service"
             ],
             "mounts": {
-                "/app/log": "/home/rickzx98/output/import-log/"
+                "/app/log": "/home/gds-server/output/import-log/"
             }
         }, {
             "priority": "5",
@@ -152,7 +152,7 @@
             "database": false,
             "parameters": {
                 "#DOMAIN_SERVICE": "gds_ts_service",
-                "#DBPATH": "/home/rickzx98/output/gds-ts-api-db/",
+                "#DBPATH": "/home/gds-server/output/gds-ts-api-db/",
                 "#REPO": "https://github.com/great-design-and-systems/gds-ms-api.git",
                 "#MAINTAINER": "rickzx98@gmail.com",
                 "#IMAGE_SERVICE_TAG": "0.1",
@@ -173,7 +173,7 @@
             ],
             "port": "9000:3000",
             "mounts": {
-                "/app/log": "/home/rickzx98/output/gds-ts-api-log/"
+                "/app/log": "/home/gds-server/output/gds-ts-api-log/"
             }
         }, {
             "priority": "4",
@@ -181,7 +181,7 @@
             "database": false,
             "parameters": {
                 "#DOMAIN_SERVICE": "gds_terminal",
-                "#DBPATH": "/home/rickzx98/output/gds-terminal-db/",
+                "#DBPATH": "/home/gds-server/output/gds-terminal-db/",
                 "#REPO": "https://github.com/great-design-and-systems/gds-terminal.git",
                 "#MAINTAINER": "rickzx98@gmail.com",
                 "#IMAGE_SERVICE_TAG": "0.1",
@@ -189,7 +189,7 @@
             },
             "port": "9005:3000",
             "mounts": {
-                "/app/log": "/home/rickzx98/output/gds-terminal-log/"
+                "/app/log": "/home/gds-server/output/gds-terminal-log/"
             }
         }, {
             "priority": "3",
@@ -197,7 +197,7 @@
             "database": false,
             "parameters": {
                 "#DOMAIN_SERVICE": "gds_lrts",
-                "#DBPATH": "/home/rickzx98/output/gds-lrts-db/",
+                "#DBPATH": "/home/gds-server/output/gds-lrts-db/",
                 "#REPO": "https://github.com/great-design-and-systems/gds-lrts.git",
                 "#MAINTAINER": "rickzx98@gmail.com",
                 "#IMAGE_SERVICE_TAG": "0.1",
@@ -205,7 +205,7 @@
             },
             "port": "9006:3000",
             "mounts": {
-                "/app/log": "/home/rickzx98/output/gds-lrts-log/"
+                "/app/log": "/home/gds-server/output/gds-lrts-log/"
             }
         }]
     }
