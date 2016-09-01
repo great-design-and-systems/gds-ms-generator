@@ -18,12 +18,13 @@
             "RUN[2]": "npm install",
             "ENV[0]": "PORT 3000",
             "ENV[1]": "APP_LOG /app/log",
-            "ENV[2]": "DB_HOST #DOMAIN_DB",
-            "ENV[3]": "DB #DOMAIN_DB",
-            "ENV[4]": "DB_TEST #DOMAIN_DB_TEST",
+            "ENV[2]": "DB_HOST localhost",
+            "ENV[3]": "DB service_db",
+            "ENV[4]": "DB_TEST service_db_test",
             "ENV[5]": "DB_PORT 27017",
             "ENV[6]": "DB_PORT_TEST 27017",
-            "ENV[7]": "DB_HOST_TEST #DOMAIN_DB",
+            "ENV[7]": "DB_HOST_TEST localhost",
+            "RUN[2": "mongod --fork --logpath=/app/db/log/mongod.log",
             "CMD": "npm start",
             "EXPOSE": "3000"
         },
@@ -31,7 +32,6 @@
             "priority": "10",
             "name": "user-service",
             "parameters": {
-                "#DOMAIN_DB": "user_db",
                 "#DOMAIN_SERVICE": "user_service",
                 "#DBPATH": "/home/rickzx98/output/user-db/",
                 "#REPO": "https://github.com/great-design-and-systems/user-service.git",
@@ -46,7 +46,6 @@
             "priority": "10",
             "name": "security-service",
             "parameters": {
-                "#DOMAIN_DB": "security_db",
                 "#DOMAIN_SERVICE": "security_service",
                 "#DBPATH": "/home/rickzx98/output/security-db/",
                 "#REPO": "https://github.com/great-design-and-systems/security-service.git",
@@ -62,7 +61,6 @@
             "priority": "10",
             "name": "faculty-service",
             "parameters": {
-                "#DOMAIN_DB": "faculty_db",
                 "#DOMAIN_SERVICE": "faculty_service",
                 "#DBPATH": "/home/rickzx98/output/faculty-db/",
                 "#REPO": "https://github.com/great-design-and-systems/faculty-service.git",
@@ -77,7 +75,6 @@
             "priority": "10",
             "name": "student-service",
             "parameters": {
-                "#DOMAIN_DB": "student_db",
                 "#DOMAIN_SERVICE": "student_service",
                 "#DBPATH": "/home/rickzx98/output/student-db/",
                 "#REPO": "https://github.com/great-design-and-systems/student-service.git",
@@ -92,7 +89,6 @@
             "priority": "10",
             "name": "time-service",
             "parameters": {
-                "#DOMAIN_DB": "time_db",
                 "#DOMAIN_SERVICE": "time_service",
                 "#DBPATH": "/home/rickzx98/output/time-db/",
                 "#REPO": "https://github.com/great-design-and-systems/time-service.git",
@@ -107,7 +103,6 @@
             "priority": "10",
             "name": "file-service",
             "parameters": {
-                "#DOMAIN_DB": "file_db",
                 "#DOMAIN_SERVICE": "file_service",
                 "#DBPATH": "/home/rickzx98/output/file-db/",
                 "#REPO": "https://github.com/great-design-and-systems/file-service.git",
@@ -122,7 +117,6 @@
             "priority": "10",
             "name": "export-service",
             "parameters": {
-                "#DOMAIN_DB": "export_db",
                 "#DOMAIN_SERVICE": "export_service",
                 "#DBPATH": "/home/rickzx98/output/export-db/",
                 "#REPO": "https://github.com/great-design-and-systems/export-service.git",
@@ -137,7 +131,6 @@
             "priority": "10",
             "name": "import-service",
             "parameters": {
-                "#DOMAIN_DB": "import_db",
                 "#DOMAIN_SERVICE": "import_service",
                 "#DBPATH": "/home/rickzx98/output/import-db/",
                 "#REPO": "https://github.com/great-design-and-systems/import-service.git",
@@ -158,7 +151,6 @@
             "name": "gds-ts-api",
             "database": false,
             "parameters": {
-                "#DOMAIN_DB": "gds_ts_db",
                 "#DOMAIN_SERVICE": "gds_ts_service",
                 "#DBPATH": "/home/rickzx98/output/gds-ts-api-db/",
                 "#REPO": "https://github.com/great-design-and-systems/gds-ms-api.git",
@@ -188,7 +180,6 @@
             "name": "gds-terminal",
             "database": false,
             "parameters": {
-                "#DOMAIN_DB": "gds_terminal_db",
                 "#DOMAIN_SERVICE": "gds_terminal",
                 "#DBPATH": "/home/rickzx98/output/gds-terminal-db/",
                 "#REPO": "https://github.com/great-design-and-systems/gds-terminal.git",
@@ -205,7 +196,6 @@
             "name": "gds-lrts",
             "database": false,
             "parameters": {
-                "#DOMAIN_DB": "gds_lrts_db",
                 "#DOMAIN_SERVICE": "gds_lrts",
                 "#DBPATH": "/home/rickzx98/output/gds-lrts-db/",
                 "#REPO": "https://github.com/great-design-and-systems/gds-lrts.git",
