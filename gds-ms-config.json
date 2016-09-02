@@ -39,7 +39,8 @@
             },
             "mounts": {
                 "/app/log": "/home/gds-server/output/user-log/",
-                "/data/db": "/home/gds-server/output/user-db/"
+                "/data/db": "/home/gds-server/output/user-db/",
+                "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
             "priority": "10",
@@ -54,7 +55,8 @@
             },
             "mounts": {
                 "/app/log": "/home/gds-server/output/security-log/",
-                "/data/db": "/home/gds-server/output/security-db/"
+                "/data/db": "/home/gds-server/output/security-db/",
+                "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
             "priority": "10",
@@ -68,7 +70,8 @@
             },
             "mounts": {
                 "/app/log": "/home/gds-server/output/faculty-log/",
-                "/data/db": "/home/gds-server/output/faculty-db/"
+                "/data/db": "/home/gds-server/output/faculty-db/",
+                "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
             "priority": "10",
@@ -82,7 +85,8 @@
             },
             "mounts": {
                 "/app/log": "/home/gds-server/output/student-log/",
-                "/data/db": "/home/gds-server/output/student-db/"
+                "/data/db": "/home/gds-server/output/student-db/",
+                "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
             "priority": "10",
@@ -96,7 +100,8 @@
             },
             "mounts": {
                 "/app/log": "/home/gds-server/output/time-log/",
-                "/data/db": "/home/gds-server/output/time-db/"
+                "/data/db": "/home/gds-server/output/time-db/",
+                "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
             "priority": "10",
@@ -110,7 +115,8 @@
             },
             "mounts": {
                 "/app/log": "/home/gds-server/output/file-log/",
-                "/data/db": "/home/gds-server/output/file-db/"
+                "/data/db": "/home/gds-server/output/file-db/",
+                "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
             "priority": "10",
@@ -124,7 +130,8 @@
             },
             "mounts": {
                 "/app/log": "/home/gds-server/output/export-log/",
-                "/data/db": "/home/gds-server/output/export-db/"
+                "/data/db": "/home/gds-server/output/export-db/",
+                "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
             "priority": "6",
@@ -143,7 +150,8 @@
             ],
             "mounts": {
                 "/app/log": "/home/gds-server/output/import-log/",
-                "/data/db": "/home/gds-server/output/import-db/"
+                "/data/db": "/home/gds-server/output/import-db/",
+                "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
             "priority": "5",
@@ -172,7 +180,8 @@
             "port": "9000:3000",
             "mounts": {
                 "/app/log": "/home/gds-server/output/gds-ts-api-log/",
-                "/data/db": "/home/gds-server/output/gds-ts-api-db/"
+                "/data/db": "/home/gds-server/output/gds-ts-api-db/",
+                "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
             "priority": "4",
@@ -188,7 +197,8 @@
             "port": "9005:3000",
             "mounts": {
                 "/app/log": "/home/gds-server/output/gds-terminal-log/",
-                "/data/db": "/home/gds-server/output/gds-terminal-db/"
+                "/data/db": "/home/gds-server/output/gds-terminal-db/",
+                "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
             "priority": "3",
@@ -204,7 +214,8 @@
             "port": "9006:3000",
             "mounts": {
                 "/app/log": "/home/gds-server/output/gds-lrts-log/",
-                "/data/db": "/home/gds-server/output/gds-lrts-db/"
+                "/data/db": "/home/gds-server/output/gds-lrts-db/",
+                "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }]
     }
