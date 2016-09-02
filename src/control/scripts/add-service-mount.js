@@ -13,9 +13,8 @@ function addServiceMount(baseCMDString, mounts, callback) {
             if (!err) {
                 var addedMount = baseCMDString;
                 options.forEach(function(value) {
-                    fs.ensureDir(value.data, function() {
-                        addedMount += '-v ' + value.data + ':' + value.key + '\t';
-                    });
+                    fs.ensureDirSync(value.data);
+                    addedMount += '-v ' + value.data + ':' + value.key + '\t';
                 });
                 callback(undefined, addedMount);
             } else {
