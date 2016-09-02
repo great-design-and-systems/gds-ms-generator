@@ -24,8 +24,7 @@
             "ENV[5]": "DB_PORT 27017",
             "ENV[6]": "DB_PORT_TEST 27017",
             "ENV[7]": "DB_HOST_TEST localhost",
-            "RUN[3]": "mongod --fork --logpath=/app/db/log/mongod.log",
-            "CMD": "npm start",
+            "CMD": "mongod --fork --logpath=/app/db/log/mongod.log && npm start",
             "EXPOSE": "3000"
         },
         "services": [{
@@ -39,7 +38,8 @@
                 "#IMAGE_SERVICE_TAG": "0.2"
             },
             "mounts": {
-                "/app/log": "/home/gds-server/output/user-log/"
+                "/app/log": "/home/gds-server/output/user-log/",
+                "/data/db": "/home/gds-server/output/user-db/"
             }
         }, {
             "priority": "10",
@@ -53,7 +53,8 @@
                 "#SCHOOL_CONFIG_SERVICE_PORT": "NONE"
             },
             "mounts": {
-                "/app/log": "/home/gds-server/output/security-log/"
+                "/app/log": "/home/gds-server/output/security-log/",
+                "/data/db": "/home/gds-server/output/security-db/"
             }
         }, {
             "priority": "10",
@@ -66,7 +67,8 @@
                 "#IMAGE_SERVICE_TAG": "0.2"
             },
             "mounts": {
-                "/app/log": "/home/gds-server/output/faculty-log/"
+                "/app/log": "/home/gds-server/output/faculty-log/",
+                "/data/db": "/home/gds-server/output/faculty-db/"
             }
         }, {
             "priority": "10",
@@ -79,7 +81,8 @@
                 "#IMAGE_SERVICE_TAG": "0.2"
             },
             "mounts": {
-                "/app/log": "/home/gds-server/output/student-log/"
+                "/app/log": "/home/gds-server/output/student-log/",
+                "/data/db": "/home/gds-server/output/student-db/"
             }
         }, {
             "priority": "10",
@@ -92,7 +95,8 @@
                 "#IMAGE_SERVICE_TAG": "0.2"
             },
             "mounts": {
-                "/app/log": "/home/gds-server/output/time-log/"
+                "/app/log": "/home/gds-server/output/time-log/",
+                "/data/db": "/home/gds-server/output/time-db/"
             }
         }, {
             "priority": "10",
@@ -105,7 +109,8 @@
                 "#IMAGE_SERVICE_TAG": "0.2"
             },
             "mounts": {
-                "/app/log": "/home/gds-server/output/file-log/"
+                "/app/log": "/home/gds-server/output/file-log/",
+                "/data/db": "/home/gds-server/output/file-db/"
             }
         }, {
             "priority": "10",
@@ -118,7 +123,8 @@
                 "#IMAGE_SERVICE_TAG": "0.2"
             },
             "mounts": {
-                "/app/log": "/home/gds-server/output/export-log/"
+                "/app/log": "/home/gds-server/output/export-log/",
+                "/data/db": "/home/gds-server/output/export-db/"
             }
         }, {
             "priority": "10",
@@ -136,7 +142,8 @@
                 "file_service"
             ],
             "mounts": {
-                "/app/log": "/home/gds-server/output/import-log/"
+                "/app/log": "/home/gds-server/output/import-log/",
+                "/data/db": "/home/gds-server/output/import-db/"
             }
         }, {
             "priority": "5",
@@ -164,7 +171,8 @@
             ],
             "port": "9000:3000",
             "mounts": {
-                "/app/log": "/home/gds-server/output/gds-ts-api-log/"
+                "/app/log": "/home/gds-server/output/gds-ts-api-log/",
+                "/data/db": "/home/gds-server/output/gds-ts-api-db/"
             }
         }, {
             "priority": "4",
@@ -179,7 +187,8 @@
             },
             "port": "9005:3000",
             "mounts": {
-                "/app/log": "/home/gds-server/output/gds-terminal-log/"
+                "/app/log": "/home/gds-server/output/gds-terminal-log/",
+                "/data/db": "/home/gds-server/output/gds-terminal-db/"
             }
         }, {
             "priority": "3",
@@ -194,7 +203,8 @@
             },
             "port": "9006:3000",
             "mounts": {
-                "/app/log": "/home/gds-server/output/gds-lrts-log/"
+                "/app/log": "/home/gds-server/output/gds-lrts-log/",
+                "/data/db": "/home/gds-server/output/gds-lrts-db/"
             }
         }]
     }
