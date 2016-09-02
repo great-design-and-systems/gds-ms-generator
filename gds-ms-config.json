@@ -134,7 +134,7 @@
                 "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
-            "priority": "6",
+            "priority": "5",
             "name": "import-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "import_service",
