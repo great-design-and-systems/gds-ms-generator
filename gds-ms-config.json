@@ -24,7 +24,6 @@
             "ENV[5]": "DB_PORT 27017",
             "ENV[6]": "DB_PORT_TEST 27017",
             "ENV[7]": "DB_HOST_TEST localhost",
-            "ENTRYPOINT": "bin/bash",
             "CMD": "mongod --fork --logpath=/app/db/log/mongod.log && npm start",
             "EXPOSE": "3000"
         },
