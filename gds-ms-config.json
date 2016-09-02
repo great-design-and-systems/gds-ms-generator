@@ -133,7 +133,7 @@
                 "/host/node_modules": "/home/gds-server/output/node_modules"
             }
         }, {
-            "priority": "10",
+            "priority": "6",
             "name": "import-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "import_service",
