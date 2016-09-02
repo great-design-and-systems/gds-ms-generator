@@ -28,7 +28,7 @@
             "EXPOSE": "3000"
         },
         "services": [{
-            "priority": "10",
+            "priority": "20",
             "name": "user-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "user_service",
@@ -43,7 +43,7 @@
                 "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
-            "priority": "10",
+            "priority": "19",
             "name": "security-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "security_service",
@@ -59,7 +59,7 @@
                 "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
-            "priority": "10",
+            "priority": "18",
             "name": "faculty-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "faculty_service",
@@ -74,7 +74,7 @@
                 "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
-            "priority": "10",
+            "priority": "17",
             "name": "student-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "student_service",
@@ -89,7 +89,7 @@
                 "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
-            "priority": "10",
+            "priority": "16",
             "name": "time-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "time_service",
@@ -104,7 +104,7 @@
                 "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
-            "priority": "10",
+            "priority": "15",
             "name": "file-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "file_service",
@@ -119,7 +119,7 @@
                 "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
-            "priority": "10",
+            "priority": "14",
             "name": "export-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "export_service",
@@ -134,7 +134,7 @@
                 "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
-            "priority": "5",
+            "priority": "13",
             "name": "import-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "import_service",
@@ -154,7 +154,7 @@
                 "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
-            "priority": "5",
+            "priority": "12",
             "name": "gds-ts-api",
             "database": false,
             "parameters": {
@@ -184,7 +184,7 @@
                 "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
-            "priority": "4",
+            "priority": "11",
             "name": "gds-terminal",
             "database": false,
             "parameters": {
@@ -201,7 +201,7 @@
                 "/app/scripts/": "/home/gds-server/output/scripts/"
             }
         }, {
-            "priority": "3",
+            "priority": "10",
             "name": "gds-lrts",
             "database": false,
             "parameters": {
