@@ -196,6 +196,9 @@
                 "#MAINTAINER": "rickzx98@gmail.com",
                 "#IMAGE_SERVICE_TAG": "0.2"
             },
+            "environments": {
+                "API_HOST": "http://localhost:8080"
+            },
             "port": "9005:3000",
             "mounts": {
                 "/app/log": "/home/gds-server/output/gds-terminal-log/",
@@ -212,6 +215,9 @@
                 "#REPO": "https://github.com/great-design-and-systems/gds-lrts.git",
                 "#MAINTAINER": "rickzx98@gmail.com",
                 "#IMAGE_SERVICE_TAG": "0.2"
+            },
+            "environments": {
+                "API_HOST": "http://localhost:8080"
             },
             "port": "9006:3000",
             "mounts": {
