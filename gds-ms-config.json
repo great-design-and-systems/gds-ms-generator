@@ -127,7 +127,7 @@
                 "/data/db": "/home/gds-server/output/export-db/"
             }
         }, {
-            "priority": "10",
+            "priority": "6",
             "name": "import-service",
             "parameters": {
                 "#DOMAIN_SERVICE": "import_service",
