@@ -11,5 +11,6 @@
     "unix/uninstall.sh": "templates/scripts/unix/uninstall.sh",
     "unix/uninstall-db.sh": "templates/scripts/unix/uninstall-db.sh",
     "unix/uninstall-service.sh": "templates/scripts/unix/uninstall-service.sh",
-    "unix/update.sh": "templates/scripts/unix/update.sh"
+    "unix/update.sh": "templates/scripts/unix/update.sh",
+    "unix/reinstall.sh": "templates/scripts/unix/reinstall.sh"
 }

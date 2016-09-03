@@ -11,5 +11,6 @@
     "windows/uninstall.bat": "templates/scripts/windows/uninstall.bat",
     "windows/uninstall-db.bat": "templates/scripts/windows/uninstall-db.bat",
     "windows/uninstall-service.bat": "templates/scripts/windows/uninstall-service.bat",
-    "windows/update.bat": "templates/scripts/windows/update.bat"
+    "windows/update.bat": "templates/scripts/windows/update.bat",
+    "windows/reinstall.bat": "templates/scripts/windows/reinstall.bat"
 }
