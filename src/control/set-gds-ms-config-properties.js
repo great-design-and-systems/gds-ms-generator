@@ -6,6 +6,11 @@ function execute(configFile, callback) {
             var stringifiedJSON = JSON.stringify(configFile);
             lodash.forEach(configFile.properties, function(value, key) {
                 var regex = new RegExp('\\${' + key + '}', 'g');
+                lodash.forEach(configFile.properties, function(fieldValue, field) {
+                    if (key !== field) {
+                        value = value.replace(new RegExp('\\${' + field + '}', 'g'), fieldValue);
+                    }
+                });
                 stringifiedJSON = stringifiedJSON.replace(regex, value);
             });
             callback(undefined, JSON.parse(stringifiedJSON));
