@@ -1,12 +1,11 @@
 var fs = require('node-fs');
 var path = require('path');
-var async = require('async');
 var lodash = require('lodash');
 
 function execute(configFile, callback) {
     setTimeout(function() {
         if (configFile.files) {
-            createFiles(configFile.files, callback);
+            createFiles(configFile.files, lodash.keys(configFile.files), callback);
         } else {
             callback({
                 message: 'No files created.'
@@ -15,15 +14,35 @@ function execute(configFile, callback) {
     });
 }
 
-function createFiles(files, callback) {
-    async.eachSeries(files, function(file, next) {
-        console.log('file', file);
-    }, function() {
-        callback();
+function createFiles(files, filenames, callback, index) {
+    if (!index) {
+        index = 0;
+    }
+    processFile(filenames[index], lodash.get(files, filenames[index]), function(err){
+        if(!err){
+            index++;
+            if(index < filenames.length){
+                createFiles(files, filenames, callback, index);
+            }else {
+                callback();
+            }
+        }else {
+            callback(err);
+        }
     });
 }
 
-function createFile(filename, outputPath, shCalls, callback) {
-    fs.writeFile(path.join(outputPath, filename), shCalls, callback);
+function processFile(filename, contents, callback) {
+    var fileContent = '';
+    contents.forEach(function(content){
+        fileContent += content;
+        fileContent += '\n';
+    });
+    createFile(filename,fileContent, callback);
+}   
+
+function createFile(filename, fileContent, callback) {
+    fs.writeFile(filename, fileContent, callback);
 }
+
 module.exports = execute;

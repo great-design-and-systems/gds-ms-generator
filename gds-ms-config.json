@@ -2,11 +2,15 @@
     "name": "gds-ms-project",
     "path": "${output}",
     "properties": {
-        "root": "/home/gds-server",
+        "root": "/Users/m27/tester/root",
         "output": "${root}/test"
     },
     "files": {
-        "${root}/start.sh": []
+        "${root}/start.bat": [
+            "echo \"Hello world!\"",
+             "call run.bat"],
+         "${root}/run.bat": [
+            "echo \"Hello run!\""]
     },
     "containers": {
         "templates": {
