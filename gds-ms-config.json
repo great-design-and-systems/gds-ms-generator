@@ -14,7 +14,7 @@
             "npm start",
             "cd ..",
             "cd ${output}",
-            "${sudo sh restart.sh}"
+            "${sudo} sh restart.sh"
         ],
         "${root}/run.sh": [
             "cd gds-ms-generator",
