@@ -39,7 +39,7 @@ function execute(config, callback) {
                     }
                 ],
                     function (asyncFunc, callback) {
-                         if (service.mounts && asyncFunc.name === 'AddServiceMount') {
+                        if (service.mounts && asyncFunc.name === 'AddServiceMount') {
                             new asyncFunc.execute(shCalls, service.mounts, function (err, shCallsEnv) {
                                 if (!err) {
                                     shCalls = shCallsEnv;
@@ -62,6 +62,10 @@ function execute(config, callback) {
                         }
                     }, function () {
                         shCalls += lodash.get(service.parameters, '#DOMAIN_SERVICE') + ':' + lodash.get(service.parameters, '#IMAGE_SERVICE_TAG');
+                        if (service.docker && service.docker.cmd) {
+                            shCalls += '\t';
+                            shCalls += service.docker.cmd;
+                        }
                         createFile(servicePath, shCalls, function (err) {
                             if (err) {
                                 callback({

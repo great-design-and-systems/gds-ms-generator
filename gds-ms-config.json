@@ -2,16 +2,30 @@
     "name": "gds-ms-project",
     "path": "${output}",
     "properties": {
-        "root": "/Users/m27/tester/root",
-        "output": "${root}/test"
+        "password": "gds",
+        "root": "/home/gds-server",
+        "output": "${root}/test",
+        "sudo": "echo '${password}' | sudo -kS"
     },
     "files": {
-        "${root}/start.bat": [
-            "echo \"Hello world!\"",
-            "call run.bat"
+        "${root}/start.sh": [
+            "cd gds-ms-generator",
+            "git pull",
+            "npm start",
+            "cd ..",
+            "cd ${output}",
+            "${sudo sh restart.sh}"
         ],
-        "${root}/run.bat": [
-            "echo \"Hello run!\""
+        "${root}/run.sh": [
+            "cd gds-ms-generator",
+            "checkout -b gds-assumption origin/gds-assumption",
+            "git pull",
+            "${sudo} npm start",
+            "cd ${output}/gds-ts-api/unix/",
+            "${sudo} sh uninstall.sh",
+            "${sudo} sh install.sh",
+            "cd ${output}",
+            "${sudo} sh restart.sh"
         ]
     },
     "containers": {
@@ -39,7 +53,7 @@
             "ENV[5]": "DB_PORT 27017",
             "ENV[6]": "DB_PORT_TEST 27017",
             "ENV[7]": "DB_HOST_TEST localhost",
-            "CMD": "mongod --fork --logpath=/app/db/log/mongod.log && npm start",
+            "CMD": "mongod --fork --logpath=/app/db/log/mongod.log && proxychains forever index.js",
             "EXPOSE": "3000"
         },
         "services": [
@@ -227,6 +241,9 @@
                     "/app/log": "${output}/gds-terminal-log/",
                     "/data/db": "${output}/gds-terminal-db/",
                     "/app/scripts/": "${output}/scripts/"
+                },
+                "docker": {
+                    "cmd": "mongod --fork --logpath=/app/db/log/mongod.log && npm start"
                 }
             },
             {
@@ -248,6 +265,9 @@
                     "/app/log": "${output}/gds-lrts-log/",
                     "/data/db": "${output}/gds-lrts-db/",
                     "/app/scripts/": "${output}/scripts/"
+                },
+                "docker": {
+                    "cmd": "mongod --fork --logpath=/app/db/log/mongod.log && npm start"
                 }
             }
         ]
