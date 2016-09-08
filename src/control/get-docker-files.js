@@ -15,7 +15,6 @@ function preloadServiceDockerfile(templateFile, serviceDocker, servicePath, para
     filePreloader.putText('#MAINTAINER', lodash.get(parameters, '#MAINTAINER'));
     filePreloader.putText('#IMAGE_DB_TAG', lodash.get(parameters, '#IMAGE_DB_TAG'));
     filePreloader.putText('#IMAGE_SERVICE_TAG', lodash.get(parameters, '#IMAGE_SERVICE_TAG'));
-    filePreloader.putText('#SCHOOL_CONFIG_SERVICE_PORT', lodash.get(parameters, '#SCHOOL_CONFIG_SERVICE_PORT'));
     filePreloader.readTemplate(function (err) {
         console.log('readTemplate', err);
         callback({

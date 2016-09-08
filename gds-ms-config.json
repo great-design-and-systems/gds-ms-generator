@@ -1,6 +1,19 @@
 {
     "name": "gds-ms-project",
-    "path": "/home/rickzx98/output",
+    "path": "${output}",
+    "properties": {
+        "root": "/Users/m27/tester/root",
+        "output": "${root}/test"
+    },
+    "files": {
+        "${root}/start.bat": [
+            "echo \"Hello world!\"",
+            "call run.bat"
+        ],
+        "${root}/run.bat": [
+            "echo \"Hello run!\""
+        ]
+    },
     "containers": {
         "templates": {
             "dockerTemplateFile": "./templates/docker-template.json",
@@ -13,210 +26,230 @@
             "FROM": "rickzx98/gds-ms:#IMAGE_SERVICE_TAG",
             "MAINTAINER": "rickzx98@gmail.com",
             "RUN[0]": "apt-get update",
-            "RUN[1]": "git clone #REPO /host && npm config set logfd /app/log",
+            "RUN[1]": "git clone #REPO /host && npm config set logfd /app/log/system.log && mkdir /app/scripts/",
             "WORKDIR": "/host",
             "RUN[2]": "npm install",
+            "RUN[3]": "bower --allow-root update -V",
+            "RUN[4]": "gulp",
             "ENV[0]": "PORT 3000",
-            "ENV[1]": "APP_LOG /app/log",
-            "ENV[2]": "DB_HOST #DOMAIN_DB",
-            "ENV[3]": "DB #DOMAIN_DB",
-            "ENV[4]": "DB_TEST #DOMAIN_DB_TEST",
+            "ENV[1]": "APP_LOG /app/log/system.log",
+            "ENV[2]": "DB_HOST localhost",
+            "ENV[3]": "DB service_db",
+            "ENV[4]": "DB_TEST service_db_test",
             "ENV[5]": "DB_PORT 27017",
             "ENV[6]": "DB_PORT_TEST 27017",
-            "ENV[7]": "DB_HOST_TEST #DOMAIN_DB",
-            "CMD": "npm start",
+            "ENV[7]": "DB_HOST_TEST localhost",
+            "CMD": "mongod --fork --logpath=/app/db/log/mongod.log && npm start",
             "EXPOSE": "3000"
         },
-        "services": [{
-            "priority": "10",
-            "name": "user-service",
-            "parameters": {
-                "#DOMAIN_DB": "user_db",
-                "#DOMAIN_SERVICE": "user_service",
-                "#DBPATH": "/home/rickzx98/output/user-db/",
-                "#REPO": "https://github.com/great-design-and-systems/user-service.git",
-                "#MAINTAINER": "rickzx98@gmail.com",
-                "#IMAGE_SERVICE_TAG": "0.1",
-                "#IMAGE_DB_TAG": "0.1"
+        "services": [
+            {
+                "priority": "20",
+                "name": "user-service",
+                "parameters": {
+                    "#DOMAIN_SERVICE": "user_service",
+                    "#DBPATH": "${output}/user-db/",
+                    "#REPO": "https://github.com/great-design-and-systems/user-service.git",
+                    "#MAINTAINER": "rickzx98@gmail.com",
+                    "#IMAGE_SERVICE_TAG": "0.2"
+                },
+                "mounts": {
+                    "/app/log": "${output}/user-log/",
+                    "/data/db": "${output}/user-db/",
+                    "/app/scripts/": "${output}/scripts/"
+                }
             },
-            "mounts": {
-                "/app/log": "/home/rickzx98/output/user-log/"
+            {
+                "priority": "19",
+                "name": "security-service",
+                "parameters": {
+                    "#DOMAIN_SERVICE": "security_service",
+                    "#DBPATH": "${output}/security-db/",
+                    "#REPO": "https://github.com/great-design-and-systems/security-service.git",
+                    "#MAINTAINER": "rickzx98@gmail.com",
+                    "#IMAGE_SERVICE_TAG": "0.2",
+                    "#SCHOOL_CONFIG_SERVICE_PORT": "NONE"
+                },
+                "mounts": {
+                    "/app/log": "${output}/security-log/",
+                    "/data/db": "${output}/security-db/",
+                    "/app/scripts/": "${output}/scripts/"
+                }
+            },
+            {
+                "priority": "18",
+                "name": "faculty-service",
+                "parameters": {
+                    "#DOMAIN_SERVICE": "faculty_service",
+                    "#DBPATH": "${output}/faculty-db/",
+                    "#REPO": "https://github.com/great-design-and-systems/faculty-service.git",
+                    "#MAINTAINER": "rickzx98@gmail.com",
+                    "#IMAGE_SERVICE_TAG": "0.2"
+                },
+                "mounts": {
+                    "/app/log": "${output}/faculty-log/",
+                    "/data/db": "${output}/faculty-db/",
+                    "/app/scripts/": "${output}/scripts/"
+                }
+            },
+            {
+                "priority": "17",
+                "name": "student-service",
+                "parameters": {
+                    "#DOMAIN_SERVICE": "student_service",
+                    "#DBPATH": "${output}/student-db/",
+                    "#REPO": "https://github.com/great-design-and-systems/student-service.git",
+                    "#MAINTAINER": "rickzx98@gmail.com",
+                    "#IMAGE_SERVICE_TAG": "0.2"
+                },
+                "mounts": {
+                    "/app/log": "${output}/student-log/",
+                    "/data/db": "${output}/student-db/",
+                    "/app/scripts/": "${output}/scripts/"
+                }
+            },
+            {
+                "priority": "16",
+                "name": "time-service",
+                "parameters": {
+                    "#DOMAIN_SERVICE": "time_service",
+                    "#DBPATH": "${output}/time-db/",
+                    "#REPO": "https://github.com/great-design-and-systems/time-service.git",
+                    "#MAINTAINER": "rickzx98@gmail.com",
+                    "#IMAGE_SERVICE_TAG": "0.2"
+                },
+                "mounts": {
+                    "/app/log": "${output}/time-log/",
+                    "/data/db": "${output}/time-db/",
+                    "/app/scripts/": "${output}/scripts/"
+                }
+            },
+            {
+                "priority": "15",
+                "name": "file-service",
+                "parameters": {
+                    "#DOMAIN_SERVICE": "file_service",
+                    "#DBPATH": "${output}/file-db/",
+                    "#REPO": "https://github.com/great-design-and-systems/file-service.git",
+                    "#MAINTAINER": "rickzx98@gmail.com",
+                    "#IMAGE_SERVICE_TAG": "0.2"
+                },
+                "mounts": {
+                    "/app/log": "${output}/file-log/",
+                    "/data/db": "${output}/file-db/",
+                    "/app/scripts/": "${output}/scripts/"
+                }
+            },
+            {
+                "priority": "14",
+                "name": "export-service",
+                "parameters": {
+                    "#DOMAIN_SERVICE": "export_service",
+                    "#DBPATH": "${output}/export-db/",
+                    "#REPO": "https://github.com/great-design-and-systems/export-service.git",
+                    "#MAINTAINER": "rickzx98@gmail.com",
+                    "#IMAGE_SERVICE_TAG": "0.2"
+                },
+                "mounts": {
+                    "/app/log": "${output}/export-log/",
+                    "/data/db": "${output}/export-db/",
+                    "/app/scripts/": "${output}/scripts/"
+                }
+            },
+            {
+                "priority": "13",
+                "name": "import-service",
+                "parameters": {
+                    "#DOMAIN_SERVICE": "import_service",
+                    "#DBPATH": "${output}/import-db/",
+                    "#REPO": "https://github.com/great-design-and-systems/import-service.git",
+                    "#MAINTAINER": "rickzx98@gmail.com",
+                    "#IMAGE_SERVICE_TAG": "0.2"
+                },
+                "links": [
+                    "faculty_service",
+                    "student_service",
+                    "file_service"
+                ],
+                "mounts": {
+                    "/app/log": "${output}/import-log/",
+                    "/data/db": "${output}/import-db/",
+                    "/app/scripts/": "${output}/scripts/"
+                }
+            },
+            {
+                "priority": "12",
+                "name": "gds-ts-api",
+                "database": false,
+                "parameters": {
+                    "#DOMAIN_SERVICE": "gds_ts_service",
+                    "#DBPATH": "${output}/gds-ts-api-db/",
+                    "#REPO": "https://github.com/great-design-and-systems/gds-ms-api.git",
+                    "#MAINTAINER": "rickzx98@gmail.com",
+                    "#IMAGE_SERVICE_TAG": "0.2"
+                },
+                "environments": {
+                    "SCHOOL_CONFIG_SERVICE_PORT": "https://school-config-service.herokuapp.com"
+                },
+                "links": [
+                    "user_service",
+                    "security_service",
+                    "faculty_service",
+                    "time_service",
+                    "student_service",
+                    "file_service",
+                    "export_service",
+                    "import_service"
+                ],
+                "port": "9000:3000",
+                "mounts": {
+                    "/app/log": "${output}/gds-ts-api-log/",
+                    "/data/db": "${output}/gds-ts-api-db/",
+                    "/app/scripts/": "${output}/scripts/"
+                }
+            },
+            {
+                "priority": "11",
+                "name": "gds-terminal",
+                "database": false,
+                "parameters": {
+                    "#DOMAIN_SERVICE": "gds_terminal",
+                    "#DBPATH": "${output}/gds-terminal-db/",
+                    "#REPO": "https://github.com/great-design-and-systems/gds-terminal.git",
+                    "#MAINTAINER": "rickzx98@gmail.com",
+                    "#IMAGE_SERVICE_TAG": "0.2"
+                },
+                "environments": {
+                    "API_HOST": "http://localhost:8080"
+                },
+                "port": "9005:3000",
+                "mounts": {
+                    "/app/log": "${output}/gds-terminal-log/",
+                    "/data/db": "${output}/gds-terminal-db/",
+                    "/app/scripts/": "${output}/scripts/"
+                }
+            },
+            {
+                "priority": "10",
+                "name": "gds-lrts",
+                "database": false,
+                "parameters": {
+                    "#DOMAIN_SERVICE": "gds_lrts",
+                    "#DBPATH": "${output}/gds-lrts-db/",
+                    "#REPO": "https://github.com/great-design-and-systems/gds-lrts.git",
+                    "#MAINTAINER": "rickzx98@gmail.com",
+                    "#IMAGE_SERVICE_TAG": "0.2"
+                },
+                "environments": {
+                    "API_HOST": "http://localhost:8080"
+                },
+                "port": "9006:3000",
+                "mounts": {
+                    "/app/log": "${output}/gds-lrts-log/",
+                    "/data/db": "${output}/gds-lrts-db/",
+                    "/app/scripts/": "${output}/scripts/"
+                }
             }
-        }, {
-            "priority": "10",
-            "name": "security-service",
-            "parameters": {
-                "#DOMAIN_DB": "security_db",
-                "#DOMAIN_SERVICE": "security_service",
-                "#DBPATH": "/home/rickzx98/output/security-db/",
-                "#REPO": "https://github.com/great-design-and-systems/security-service.git",
-                "#MAINTAINER": "rickzx98@gmail.com",
-                "#IMAGE_SERVICE_TAG": "0.1",
-                "#IMAGE_DB_TAG": "0.1",
-                "#SCHOOL_CONFIG_SERVICE_PORT": "NONE"
-            },
-            "mounts": {
-                "/app/log": "/home/rickzx98/output/security-log/"
-            }
-        }, {
-            "priority": "10",
-            "name": "faculty-service",
-            "parameters": {
-                "#DOMAIN_DB": "faculty_db",
-                "#DOMAIN_SERVICE": "faculty_service",
-                "#DBPATH": "/home/rickzx98/output/faculty-db/",
-                "#REPO": "https://github.com/great-design-and-systems/faculty-service.git",
-                "#MAINTAINER": "rickzx98@gmail.com",
-                "#IMAGE_SERVICE_TAG": "0.1",
-                "#IMAGE_DB_TAG": "0.1"
-            },
-            "mounts": {
-                "/app/log": "/home/rickzx98/output/faculty-log/"
-            }
-        }, {
-            "priority": "10",
-            "name": "student-service",
-            "parameters": {
-                "#DOMAIN_DB": "student_db",
-                "#DOMAIN_SERVICE": "student_service",
-                "#DBPATH": "/home/rickzx98/output/student-db/",
-                "#REPO": "https://github.com/great-design-and-systems/student-service.git",
-                "#MAINTAINER": "rickzx98@gmail.com",
-                "#IMAGE_SERVICE_TAG": "0.1",
-                "#IMAGE_DB_TAG": "0.1"
-            },
-            "mounts": {
-                "/app/log": "/home/rickzx98/output/student-log/"
-            }
-        }, {
-            "priority": "10",
-            "name": "time-service",
-            "parameters": {
-                "#DOMAIN_DB": "time_db",
-                "#DOMAIN_SERVICE": "time_service",
-                "#DBPATH": "/home/rickzx98/output/time-db/",
-                "#REPO": "https://github.com/great-design-and-systems/time-service.git",
-                "#MAINTAINER": "rickzx98@gmail.com",
-                "#IMAGE_SERVICE_TAG": "0.1",
-                "#IMAGE_DB_TAG": "0.1"
-            },
-            "mounts": {
-                "/app/log": "/home/rickzx98/output/time-log/"
-            }
-        }, {
-            "priority": "10",
-            "name": "file-service",
-            "parameters": {
-                "#DOMAIN_DB": "file_db",
-                "#DOMAIN_SERVICE": "file_service",
-                "#DBPATH": "/home/rickzx98/output/file-db/",
-                "#REPO": "https://github.com/great-design-and-systems/file-service.git",
-                "#MAINTAINER": "rickzx98@gmail.com",
-                "#IMAGE_SERVICE_TAG": "0.1",
-                "#IMAGE_DB_TAG": "0.1"
-            },
-            "mounts": {
-                "/app/log": "/home/rickzx98/output/file-log/"
-            }
-        }, {
-            "priority": "10",
-            "name": "export-service",
-            "parameters": {
-                "#DOMAIN_DB": "export_db",
-                "#DOMAIN_SERVICE": "export_service",
-                "#DBPATH": "/home/rickzx98/output/export-db/",
-                "#REPO": "https://github.com/great-design-and-systems/export-service.git",
-                "#MAINTAINER": "rickzx98@gmail.com",
-                "#IMAGE_SERVICE_TAG": "0.1",
-                "#IMAGE_DB_TAG": "0.1"
-            },
-            "mounts": {
-                "/app/log": "/home/rickzx98/output/export-log/"
-            }
-        }, {
-            "priority": "10",
-            "name": "import-service",
-            "parameters": {
-                "#DOMAIN_DB": "import_db",
-                "#DOMAIN_SERVICE": "import_service",
-                "#DBPATH": "/home/rickzx98/output/import-db/",
-                "#REPO": "https://github.com/great-design-and-systems/import-service.git",
-                "#MAINTAINER": "rickzx98@gmail.com",
-                "#IMAGE_SERVICE_TAG": "0.1",
-                "#IMAGE_DB_TAG": "0.1"
-            },
-            "links": [
-                "faculty_service",
-                "student_service",
-                "file_service"
-            ],
-            "mounts": {
-                "/app/log": "/home/rickzx98/output/import-log/"
-            }
-        }, {
-            "priority": "5",
-            "name": "gds-ts-api",
-            "database": false,
-            "parameters": {
-                "#DOMAIN_DB": "gds_ts_db",
-                "#DOMAIN_SERVICE": "gds_ts_service",
-                "#DBPATH": "/home/rickzx98/output/gds-ts-api-db/",
-                "#REPO": "https://github.com/great-design-and-systems/gds-ms-api.git",
-                "#MAINTAINER": "rickzx98@gmail.com",
-                "#IMAGE_SERVICE_TAG": "0.1",
-                "#IMAGE_DB_TAG": "0.1"
-            },
-            "environments": {
-                "SCHOOL_CONFIG_SERVICE_PORT": "https://school-config-service.herokuapp.com"
-            },
-            "links": [
-                "user_service",
-                "security_service",
-                "faculty_service",
-                "time_service",
-                "student_service",
-                "file_service",
-                "export_service",
-                "import_service"
-            ],
-            "port": "9000:3000",
-            "mounts": {
-                "/app/log": "/home/rickzx98/output/gds-ts-api-log/"
-            }
-        }, {
-            "priority": "4",
-            "name": "gds-terminal",
-            "database": false,
-            "parameters": {
-                "#DOMAIN_DB": "gds_terminal_db",
-                "#DOMAIN_SERVICE": "gds_terminal",
-                "#DBPATH": "/home/rickzx98/output/gds-terminal-db/",
-                "#REPO": "https://github.com/great-design-and-systems/gds-terminal.git",
-                "#MAINTAINER": "rickzx98@gmail.com",
-                "#IMAGE_SERVICE_TAG": "0.1",
-                "#IMAGE_DB_TAG": "0.1"
-            },
-            "port": "9005:3000",
-            "mounts": {
-                "/app/log": "/home/rickzx98/output/gds-terminal-log/"
-            }
-        }, {
-            "priority": "3",
-            "name": "gds-lrts",
-            "database": false,
-            "parameters": {
-                "#DOMAIN_DB": "gds_lrts_db",
-                "#DOMAIN_SERVICE": "gds_lrts",
-                "#DBPATH": "/home/rickzx98/output/gds-lrts-db/",
-                "#REPO": "https://github.com/great-design-and-systems/gds-lrts.git",
-                "#MAINTAINER": "rickzx98@gmail.com",
-                "#IMAGE_SERVICE_TAG": "0.1",
-                "#IMAGE_DB_TAG": "0.1"
-            },
-            "port": "9006:3000",
-            "mounts": {
-                "/app/log": "/home/rickzx98/output/gds-lrts-log/"
-            }
-        }]
+        ]
     }
 }
