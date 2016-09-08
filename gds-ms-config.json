@@ -2,16 +2,25 @@
     "name": "gds-ms-project",
     "path": "${output}",
     "properties": {
-        "root": "/Users/rickzx98",
-        "output": "${root}/test"
+        "password": "gds",
+        "root": "/Users/m27/tester",
+        "output": "${root}/test",
+        "sudo": "echo '${password}' | sudo -kS"
     },
     "files": {
-        "${root}/start.bat": [
-            "echo \"Hello world!\"",
-            "call run.bat"
+        "${root}/start.sh": [
+            "cd gds-ms-generator",
+            "git pull",
+            "npm start",
+            "cd ..",
+            "sh run.sh"
         ],
-        "${root}/run.bat": [
-            "echo \"Hello run!\""
+        "${root}/run.sh": [
+            "cd ${output}/gds-ts-api/unix/",
+            "${sudo} sh uninstall.sh",
+            "${sudo} sh install.sh",
+            "cd ${output}",
+            "${sudo} sh restart.sh"
         ]
     },
     "containers": {
