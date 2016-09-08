@@ -8,9 +8,11 @@
     "files": {
         "${root}/start.bat": [
             "echo \"Hello world!\"",
-             "call run.bat"],
-         "${root}/run.bat": [
-            "echo \"Hello run!\""]
+            "call run.bat"
+        ],
+        "${root}/run.bat": [
+            "echo \"Hello run!\""
+        ]
     },
     "containers": {
         "templates": {
