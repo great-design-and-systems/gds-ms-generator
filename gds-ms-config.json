@@ -69,7 +69,7 @@
       "ENV[5]": "DB_PORT 27017",
       "ENV[6]": "DB_PORT_TEST 27017",
       "ENV[7]": "DB_HOST_TEST localhost",
-      "CMD": "npm run container-start",
+      "CMD": "mongod --fork --logpath=/app/db/log/mongod.log && forever /host/index.js",
       "EXPOSE": "3000"
     },
     "services": [
@@ -236,6 +236,9 @@
           "/app/log": "${output}/gds-ts-api-log/",
           "/data/db": "${output}/gds-ts-api-db/",
           "/app/scripts/": "${output}/scripts/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
         }
       },
       {
@@ -257,6 +260,9 @@
           "/app/log": "${output}/gds-terminal-log/",
           "/data/db": "${output}/gds-terminal-db/",
           "/app/scripts/": "${output}/client-scripts/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
         }
       },
       {
@@ -278,6 +284,9 @@
           "/app/log": "${output}/gds-lrts-log/",
           "/data/db": "${output}/gds-lrts-db/",
           "/app/scripts/": "${output}/client-scripts/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
         }
       }
     ]
