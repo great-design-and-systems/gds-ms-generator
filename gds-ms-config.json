@@ -20,6 +20,7 @@
     ],
     "${root}/run.sh": [
       "cd gds-ms-generator",
+      "git fetch --all",
       "checkout -b gds-assumption origin/gds-assumption",
       "git pull",
       "${sudo} npm start",
