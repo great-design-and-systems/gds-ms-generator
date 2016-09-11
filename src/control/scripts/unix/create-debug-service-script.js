@@ -7,9 +7,9 @@ var AddServiceMount = require('../add-service-mount');
 var async = require('async');
 
 function execute(config, callback) {
-    setTimeout(function() {
+    setTimeout(function () {
         new IterateService(config.containers.services,
-            function(service, done) {
+            function (service, done) {
                 var shCalls = '';
                 var servicePath = path.join(config.path, service.name, 'unix');
                 shCalls += 'sh stop-service.sh;\n';
@@ -37,9 +37,9 @@ function execute(config, callback) {
                         name: 'AddServiceMount',
                         execute: AddServiceMount
                     }],
-                    function(asyncFunc, callback) {
+                    function (asyncFunc, callback) {
                         if (service.mounts && asyncFunc.name === 'AddServiceMount') {
-                            new asyncFunc.execute(shCalls, service.mounts, function(err, shCallsEnv) {
+                            new asyncFunc.execute(shCalls, service.mounts, function (err, shCallsEnv) {
                                 if (!err) {
                                     shCalls = shCallsEnv;
                                     callback();
@@ -48,7 +48,7 @@ function execute(config, callback) {
                                 }
                             });
                         } else if (service.environments && asyncFunc.name === 'AddServiceEnv') {
-                            new asyncFunc.execute(shCalls, service.environments, function(err, shCallsEnv) {
+                            new asyncFunc.execute(shCalls, service.environments, function (err, shCallsEnv) {
                                 if (!err) {
                                     shCalls = shCallsEnv;
                                     callback();
@@ -60,9 +60,13 @@ function execute(config, callback) {
                             callback();
                         }
                     },
-                    function() {
+                    function () {
                         shCalls += lodash.get(service.parameters, '#DOMAIN_SERVICE') + ':' + lodash.get(service.parameters, '#IMAGE_SERVICE_TAG');
-                        createFile(servicePath, shCalls, function(err) {
+                        if (service.docker && service.docker.cmd) {
+                            shCalls += '\t';
+                            shCalls += service.docker.cmd;
+                        }
+                        createFile(servicePath, shCalls, function (err) {
                             if (err) {
                                 callback({
                                     message: 'Failed to create debug-service.sh for service ' + service.name
@@ -73,7 +77,7 @@ function execute(config, callback) {
                         });
                     });
             },
-            function(err) {
+            function (err) {
                 if (err) {
                     callback({
                         message: 'Failed to create debug scripts'
