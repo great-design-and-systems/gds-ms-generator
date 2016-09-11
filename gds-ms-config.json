@@ -82,7 +82,7 @@
         },
         "mounts": {
           "/app/log": "${output}/user-log/",
-          "/data/db": "${output}/user-db/",
+          "/data/db": "${dbPath}/user-db/",
           "/app/scripts/": "${output}/scripts/"
         }
       },
@@ -99,7 +99,7 @@
         },
         "mounts": {
           "/app/log": "${output}/security-log/",
-          "/data/db": "${output}/security-db/",
+          "/data/db": "${dbPath}/security-db/",
           "/app/scripts/": "${output}/scripts/"
         }
       },
@@ -115,7 +115,7 @@
         },
         "mounts": {
           "/app/log": "${output}/faculty-log/",
-          "/data/db": "${output}/faculty-db/",
+          "/data/db": "${dbPath}/faculty-db/",
           "/app/scripts/": "${output}/scripts/"
         }
       },
@@ -131,7 +131,7 @@
         },
         "mounts": {
           "/app/log": "${output}/student-log/",
-          "/data/db": "${output}/student-db/",
+          "/data/db": "${dbPath}/student-db/",
           "/app/scripts/": "${output}/scripts/"
         }
       },
@@ -147,7 +147,7 @@
         },
         "mounts": {
           "/app/log": "${output}/time-log/",
-          "/data/db": "${output}/time-db/",
+          "/data/db": "${dbPath}/time-db/",
           "/app/scripts/": "${output}/scripts/"
         }
       },
@@ -163,7 +163,7 @@
         },
         "mounts": {
           "/app/log": "${output}/file-log/",
-          "/data/db": "${output}/file-db/",
+          "/data/db": "${dbPath}/file-db/",
           "/app/scripts/": "${output}/scripts/"
         }
       },
@@ -179,7 +179,7 @@
         },
         "mounts": {
           "/app/log": "${output}/export-log/",
-          "/data/db": "${output}/export-db/",
+          "/data/db": "${dbPath}/export-db/",
           "/app/scripts/": "${output}/scripts/"
         }
       },
@@ -195,7 +195,7 @@
         },
         "mounts": {
           "/app/log": "${output}/school-config-log/",
-          "/data/db": "${output}/school-config-db/",
+          "/data/db": "${dbPath}/school-config-db/",
           "/app/scripts/": "${output}/school-scripts/"
         },
         "docker": {
@@ -219,7 +219,7 @@
         ],
         "mounts": {
           "/app/log": "${output}/import-log/",
-          "/data/db": "${output}/import-db/",
+          "/data/db": "${dbPath}/import-db/",
           "/app/scripts/": "${output}/scripts/"
         }
       },
@@ -247,7 +247,7 @@
         "port": "9000:3000",
         "mounts": {
           "/app/log": "${output}/gds-ts-api-log/",
-          "/data/db": "${output}/gds-ts-api-db/",
+          "/data/db": "${dbPath}/gds-ts-api-db/",
           "/app/scripts/": "${output}/scripts/"
         },
         "docker": {
@@ -271,7 +271,7 @@
         "port": "9005:3000",
         "mounts": {
           "/app/log": "${output}/gds-terminal-log/",
-          "/data/db": "${output}/gds-terminal-db/",
+          "/data/db": "${dbPath}/gds-terminal-db/",
           "/app/scripts/": "${output}/client-scripts/"
         },
         "docker": {
@@ -295,7 +295,7 @@
         "port": "9006:3000",
         "mounts": {
           "/app/log": "${output}/gds-lrts-log/",
-          "/data/db": "${output}/gds-lrts-db/",
+          "/data/db": "${dbPath}/gds-lrts-db/",
           "/app/scripts/": "${output}/client-scripts/"
         },
         "docker": {
