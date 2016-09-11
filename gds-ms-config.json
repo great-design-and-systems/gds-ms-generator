@@ -189,7 +189,7 @@
         "parameters": {
           "#DOMAIN_SERVICE": "school_config_service",
           "#DBPATH": "${output}/school-config-db/",
-          "#REPO": "https://github.com/great-design-and-systems/school-config-service.git",
+          "#REPO": "-b gds-assumption https://github.com/great-design-and-systems/school-config-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.3"
         },
