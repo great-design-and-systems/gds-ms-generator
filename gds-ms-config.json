@@ -4,6 +4,7 @@
   "properties": {
     "password": "gds",
     "root": "/home/gds-server",
+    "dbPath": "${root}/db-path",
     "output": "${root}/output",
     "sudo": "echo '${password}' | sudo -kS"
   },
@@ -74,7 +75,7 @@
         "name": "user-service",
         "parameters": {
           "#DOMAIN_SERVICE": "user_service",
-          "#DBPATH": "${output}/user-db/",
+          "#DBPATH": "${dbPath}/user-db/",
           "#REPO": "https://github.com/great-design-and-systems/user-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.2"
@@ -90,7 +91,7 @@
         "name": "security-service",
         "parameters": {
           "#DOMAIN_SERVICE": "security_service",
-          "#DBPATH": "${output}/security-db/",
+          "#DBPATH": "${dbPath}/security-db/",
           "#REPO": "https://github.com/great-design-and-systems/security-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.2",
@@ -107,7 +108,7 @@
         "name": "faculty-service",
         "parameters": {
           "#DOMAIN_SERVICE": "faculty_service",
-          "#DBPATH": "${output}/faculty-db/",
+          "#DBPATH": "${dbPath}/faculty-db/",
           "#REPO": "https://github.com/great-design-and-systems/faculty-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.2"
@@ -123,7 +124,7 @@
         "name": "student-service",
         "parameters": {
           "#DOMAIN_SERVICE": "student_service",
-          "#DBPATH": "${output}/student-db/",
+          "#DBPATH": "${dbPath}/student-db/",
           "#REPO": "https://github.com/great-design-and-systems/student-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.2"
@@ -139,7 +140,7 @@
         "name": "time-service",
         "parameters": {
           "#DOMAIN_SERVICE": "time_service",
-          "#DBPATH": "${output}/time-db/",
+          "#DBPATH": "${dbPath}/time-db/",
           "#REPO": "https://github.com/great-design-and-systems/time-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.2"
@@ -155,7 +156,7 @@
         "name": "file-service",
         "parameters": {
           "#DOMAIN_SERVICE": "file_service",
-          "#DBPATH": "${output}/file-db/",
+          "#DBPATH": "${dbPath}/file-db/",
           "#REPO": "https://github.com/great-design-and-systems/file-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.2"
@@ -171,7 +172,7 @@
         "name": "export-service",
         "parameters": {
           "#DOMAIN_SERVICE": "export_service",
-          "#DBPATH": "${output}/export-db/",
+          "#DBPATH": "${dbPath}/export-db/",
           "#REPO": "https://github.com/great-design-and-systems/export-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.2"
@@ -187,7 +188,7 @@
         "name": "school-config-service",
         "parameters": {
           "#DOMAIN_SERVICE": "school_config_service",
-          "#DBPATH": "${output}/school-config-db/",
+          "#DBPATH": "${dbPath}/school-config-db/",
           "#REPO": "-b gds-assumption --single-branch https://github.com/great-design-and-systems/school-config-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.3"
@@ -206,7 +207,7 @@
         "name": "import-service",
         "parameters": {
           "#DOMAIN_SERVICE": "import_service",
-          "#DBPATH": "${output}/import-db/",
+          "#DBPATH": "${dbPath}/import-db/",
           "#REPO": "https://github.com/great-design-and-systems/import-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.2"
@@ -228,7 +229,7 @@
         "database": false,
         "parameters": {
           "#DOMAIN_SERVICE": "gds_ts_service",
-          "#DBPATH": "${output}/gds-ts-api-db/",
+          "#DBPATH": "${dbPath}/gds-ts-api-db/",
           "#REPO": "https://github.com/great-design-and-systems/gds-ms-api.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.3"
@@ -259,7 +260,7 @@
         "database": false,
         "parameters": {
           "#DOMAIN_SERVICE": "gds_terminal",
-          "#DBPATH": "${output}/gds-terminal-db/",
+          "#DBPATH": "${dbPath}/gds-terminal-db/",
           "#REPO": "https://github.com/great-design-and-systems/gds-terminal.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.3"
@@ -283,7 +284,7 @@
         "database": false,
         "parameters": {
           "#DOMAIN_SERVICE": "gds_lrts",
-          "#DBPATH": "${output}/gds-lrts-db/",
+          "#DBPATH": "${dbPath}/gds-lrts-db/",
           "#REPO": "https://github.com/great-design-and-systems/gds-lrts.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.3"
