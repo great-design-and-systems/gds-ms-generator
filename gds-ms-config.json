@@ -22,11 +22,7 @@
             "git pull",
             "npm start",
             "cd ..",
-            "sh run.sh",
-            "cd ${output}",
-            "${sudo} sh restart.sh",
-            "cd ${root}",
-            "${sudo} rm run.sh"
+            "sh run.sh"
         ],
         "${root}/run.sh": [
             "cd gds-ms-generator",
