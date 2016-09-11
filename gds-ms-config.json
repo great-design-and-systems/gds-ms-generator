@@ -4,7 +4,7 @@
   "properties": {
     "password": "gds",
     "root": "/home/gds-server",
-    "output": "${root}/test",
+    "output": "${root}/output",
     "sudo": "echo '${password}' | sudo -kS"
   },
   "files": {
@@ -19,13 +19,7 @@
       "${sudo} rm run.sh"
     ],
     "${root}/run.sh": [
-      "cd gds-ms-generator",
-      "checkout -b gds-assumption origin/gds-assumption",
-      "git pull",
-      "${sudo} npm start",
-      "cd ${output}/gds-ts-api/unix/",
-      "${sudo} sh uninstall.sh",
-      "${sudo} sh install.sh"
+      ""
     ]
   },
   "containers": {
