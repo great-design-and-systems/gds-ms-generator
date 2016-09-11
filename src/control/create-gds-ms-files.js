@@ -1,4 +1,4 @@
-var fs = require('node-fs');
+var fs = require('fs-extra');
 var path = require('path');
 var lodash = require('lodash');
 
@@ -18,15 +18,15 @@ function createFiles(files, filenames, callback, index) {
     if (!index) {
         index = 0;
     }
-    processFile(filenames[index], lodash.get(files, filenames[index]), function(err){
-        if(!err){
+    processFile(filenames[index], lodash.get(files, filenames[index]), function(err) {
+        if (!err) {
             index++;
-            if(index < filenames.length){
+            if (index < filenames.length) {
                 createFiles(files, filenames, callback, index);
-            }else {
+            } else {
                 callback();
             }
-        }else {
+        } else {
             callback(err);
         }
     });
@@ -34,15 +34,17 @@ function createFiles(files, filenames, callback, index) {
 
 function processFile(filename, contents, callback) {
     var fileContent = '';
-    contents.forEach(function(content){
+    contents.forEach(function(content) {
         fileContent += content;
         fileContent += '\n';
     });
-    createFile(filename,fileContent, callback);
-}   
+    createFile(filename, fileContent, callback);
+}
 
 function createFile(filename, fileContent, callback) {
-    fs.writeFile(filename, fileContent, callback);
+    fs.ensureFile(filename, function() {
+        fs.writeFile(filename, fileContent, callback);
+    });
 }
 
 module.exports = execute;
