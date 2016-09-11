@@ -53,7 +53,6 @@
       "WORKDIR": "/host",
       "RUN[2]": "npm install",
       "RUN[3]": "bower --allow-root update -V",
-      "RUN[4]": "gulp",
       "ENV[0]": "PORT 3000",
       "ENV[1]": "APP_LOG /app/log/system.log",
       "ENV[2]": "DB_HOST localhost",
