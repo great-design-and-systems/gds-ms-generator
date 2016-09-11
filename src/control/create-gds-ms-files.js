@@ -42,7 +42,9 @@ function processFile(filename, contents, callback) {
 }
 
 function createFile(filename, fileContent, callback) {
-    fs.writeFile(filename, fileContent, callback);
+    fs.ensureFile(filename, function() {
+        fs.writeFile(filename, fileContent, callback);
+    });
 }
 
 module.exports = execute;
