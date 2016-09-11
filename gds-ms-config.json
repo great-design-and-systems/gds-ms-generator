@@ -50,7 +50,7 @@
             "FROM": "rickzx98/gds-ms:#IMAGE_SERVICE_TAG",
             "MAINTAINER": "rickzx98@gmail.com",
             "RUN[0]": "apt-get update",
-            "RUN[1]": "git clone #REPO /host && npm config set logfd /app/log/system.log && mkdir /app/scripts/",
+            "RUN[1]": "git clone #REPO /host && npm config set logfd /app/log/system.log",
             "WORKDIR": "/host",
             "RUN[2]": "npm install",
             "RUN[3]": "bower --allow-root update -V",
