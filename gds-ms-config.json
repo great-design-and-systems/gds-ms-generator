@@ -241,7 +241,8 @@
           "student_service",
           "file_service",
           "export_service",
-          "import_service"
+          "import_service",
+          "school_config_service"
         ],
         "port": "9000:3000",
         "mounts": {
