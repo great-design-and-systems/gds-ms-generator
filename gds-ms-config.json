@@ -4,7 +4,7 @@
   "properties": {
     "password": "gds",
     "root": "/home/gds-server",
-    "output": "${root}/test",
+    "output": "${root}/output",
     "sudo": "echo '${password}' | sudo -kS"
   },
   "files": {
