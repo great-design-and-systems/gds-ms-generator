@@ -19,13 +19,13 @@
       "proxychains forever node_modules/.bin/http-server"
     ],
     "${root}/start.sh": [
-      "cd gds-ms-generator",
+      "cd ${root}/gds-ms-generator",
       "git pull",
       "npm start",
       "sh ${root}/run.sh"
     ],
     "${root}/run.sh": [
-      "cd gds-ms-generator",
+      "cd ${root}/gds-ms-generator",
       "${sudo} git fetch --all",
       "${sudo} git checkout -b gds-assumption_update_1 origin/gds-assumption_update",
       "${sudo} git pull",
