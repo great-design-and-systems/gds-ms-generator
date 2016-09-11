@@ -8,6 +8,14 @@
         "sudo": "echo '${password}' | sudo -kS"
     },
     "files": {
+        "${output}/scripts/start.sh": [
+            "mongod --fork --logpath=/app/db/log/mongod.log && proxychains forever /host/index.js"
+        ],
+        "${output}/client-scripts/start/sh": [
+            "mongod --fork --logpath=/app/db/log/mongod.log",
+            "cd /host",
+            "proxychains forever node_modules/.bin/http-server"
+        ],
         "${root}/start.sh": [
             "cd gds-ms-generator",
             "git pull",
@@ -55,7 +63,7 @@
             "ENV[5]": "DB_PORT 27017",
             "ENV[6]": "DB_PORT_TEST 27017",
             "ENV[7]": "DB_HOST_TEST localhost",
-            "CMD": "mongod --fork --logpath=/app/db/log/mongod.log && proxychains forever index.js",
+            "CMD": "npm run container-start",
             "EXPOSE": "3000"
         },
         "services": [{
@@ -232,10 +240,7 @@
             "mounts": {
                 "/app/log": "${output}/gds-terminal-log/",
                 "/data/db": "${output}/gds-terminal-db/",
-                "/app/scripts/": "${output}/scripts/"
-            },
-            "docker": {
-                "cmd": "mongod --fork --logpath=/app/db/log/mongod.log && npm start"
+                "/app/scripts/": "${output}/client-scripts/"
             }
         }, {
             "priority": "10",
@@ -255,10 +260,7 @@
             "mounts": {
                 "/app/log": "${output}/gds-lrts-log/",
                 "/data/db": "${output}/gds-lrts-db/",
-                "/app/scripts/": "${output}/scripts/"
-            },
-            "docker": {
-                "cmd": "mongod --fork --logpath=/app/db/log/mongod.log && npm start"
+                "/app/scripts/": "${output}/client-scripts/"
             }
         }]
     }
