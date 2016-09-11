@@ -12,7 +12,7 @@
         "${output}/scripts/start.sh": [
             "mongod --fork --logpath=/app/db/log/mongod.log && proxychains forever /host/index.js"
         ],
-        "${output}/client-scripts/start/sh": [
+        "${output}/client-scripts/start.sh": [
             "mongod --fork --logpath=/app/db/log/mongod.log",
             "cd /host",
             "proxychains forever node_modules/.bin/http-server"
