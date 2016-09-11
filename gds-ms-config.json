@@ -22,14 +22,13 @@
       "cd gds-ms-generator",
       "git pull",
       "npm start",
-      "cd ..",
-      "sh run.sh"
+      "sh ${root}/run.sh"
     ],
     "${root}/run.sh": [
       "cd gds-ms-generator",
-      "git fetch --all",
-      "git checkout -b gds-assumption_update_1 origin/gds-assumption_update",
-      "git pull",
+      "${sudo} git fetch --all",
+      "${sudo} git checkout -b gds-assumption_update_1 origin/gds-assumption_update",
+      "${sudo} git pull",
       "${sudo} npm start",
       "cd ${root}",
       "${sudo} sh update.sh",
