@@ -181,6 +181,25 @@
       },
       {
         "priority": "13",
+        "name": "school-config-service",
+        "parameters": {
+          "#DOMAIN_SERVICE": "school_config_service",
+          "#DBPATH": "${output}/school-config-db/",
+          "#REPO": "-b gds-assumption https://github.com/great-design-and-systems/school-config-service.git",
+          "#MAINTAINER": "rickzx98@gmail.com",
+          "#IMAGE_SERVICE_TAG": "0.3"
+        },
+        "mounts": {
+          "/app/log": "${output}/school-config-log/",
+          "/data/db": "${output}/school-config-db/",
+          "/app/scripts/": "${output}/scripts/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
+        }
+      },
+      {
+        "priority": "12",
         "name": "import-service",
         "parameters": {
           "#DOMAIN_SERVICE": "import_service",
@@ -201,7 +220,7 @@
         }
       },
       {
-        "priority": "12",
+        "priority": "11",
         "name": "gds-ts-api",
         "database": false,
         "parameters": {
@@ -210,9 +229,6 @@
           "#REPO": "https://github.com/great-design-and-systems/gds-ms-api.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.3"
-        },
-        "environments": {
-          "SCHOOL_CONFIG_SERVICE_PORT": "https://school-config-service.herokuapp.com"
         },
         "links": [
           "user_service",
@@ -235,7 +251,7 @@
         }
       },
       {
-        "priority": "11",
+        "priority": "10",
         "name": "gds-terminal",
         "database": false,
         "parameters": {
@@ -259,7 +275,7 @@
         }
       },
       {
-        "priority": "10",
+        "priority": "9",
         "name": "gds-lrts",
         "database": false,
         "parameters": {
