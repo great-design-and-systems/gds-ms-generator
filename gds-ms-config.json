@@ -26,7 +26,6 @@
       "cd ${root}/gds-ms-generator",
       "${sudo} npm start",
       "cd ${output}/school-config-service/unix",
-      "${sudo} sh uninstall.sh",
       "${sudo} sh install.sh",
       "cd ${output}/gds-ts-api/unix/",
       "${sudo} sh uninstall.sh",
