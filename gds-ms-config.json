@@ -2,7 +2,8 @@
   "name": "gds-ms-project",
   "path": "${output}",
   "properties": {
-    "apiHost": "http://192.168.1.10:8080",
+    "host": "192.168.1.10",
+    "apiHost": "http://${host}:8080",
     "password": "gds",
     "root": "/home/gds-server",
     "dbPath": "${root}/db-path",
@@ -102,6 +103,9 @@
           "/app/log": "${output}/security-log/",
           "/data/db": "${dbPath}/security-db/",
           "/app/scripts/": "${output}/scripts/"
+        },
+        "environments": {
+          "ALLOWED_HOSTS": "${host}"
         },
         "docker": {
           "cmd": "npm run container-start"
