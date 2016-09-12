@@ -2,21 +2,24 @@
   "name": "gds-ms-project",
   "path": "${output}",
   "properties": {
+    "apiHost": "http://192.168.1.10:8080",
     "password": "gds",
     "root": "/home/gds-server",
     "dbPath": "${root}/db-path",
     "output": "${root}/output",
-    "sudo": "echo '${password}' | sudo -kS"
+    "sudo": "echo '${password}' | sudo -kS",
+    "projectScripts": "${root}/gds-ms-generator/scripts",
+    "maxInlined": "--max_inlined_source_size=610"
   },
   "files": {
     "${output}/scripts/start.sh": [
-      "mongod --fork --logpath=/app/db/log/mongod.log && forever /host/index.js --max_inlined_source_size=610"
+      "mongod --fork --logpath=/app/db/log/mongod.log && forever /host/index.js ${maxInlined}"
     ],
     "${output}/client-scripts/start.sh": [
       "mongod --fork --logpath=/app/db/log/mongod.log",
       "cd /host",
       "gulp",
-      "proxychains forever node_modules/.bin/http-server"
+      "forever node_modules/.bin/http-server ${maxInlined}"
     ],
     "${root}/start.sh": [
       "cd ${root}/gds-ms-generator",
@@ -286,7 +289,7 @@
           "#IMAGE_SERVICE_TAG": "0.3"
         },
         "environments": {
-          "API_HOST": "http://localhost:8080"
+          "API_HOST": "${apiHost}"
         },
         "port": "9005:3000",
         "mounts": {
@@ -310,7 +313,7 @@
           "#IMAGE_SERVICE_TAG": "0.3"
         },
         "environments": {
-          "API_HOST": "http://localhost:8080"
+          "API_HOST": "${apiHost}"
         },
         "port": "9006:3000",
         "mounts": {
