@@ -2,6 +2,7 @@
   "name": "gds-ms-project",
   "path": "${output}",
   "properties": {
+    "apiHost": "http://192.168.1.10:8080",
     "password": "gds",
     "root": "/home/gds-server",
     "dbPath": "${root}/db-path",
@@ -31,16 +32,40 @@
       "${sudo} sh install.sh",
       "${sudo} sh ${projectScripts}/clear-ram.sh",
       "cd ${output}/gds-ts-api/unix/",
-      "${sudo} sh uninstall.sh",
-      "${sudo} sh install.sh",
+      "${sudo} sh reinstall.sh",
       "${sudo} sh ${projectScripts}/clear-ram.sh",
       "cd ${output}/gds-lrts/unix/",
-      "${sudo} sh uninstall.sh",
-      "${sudo} sh install.sh",
+      "${sudo} sh reinstall.sh",
       "${sudo} sh ${projectScripts}/clear-ram.sh",
       "cd ${output}/gds-terminal/unix/",
-      "${sudo} sh uninstall.sh",
-      "${sudo} sh install.sh",
+      "${sudo} sh reinstall.sh",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
+      "cd ${output}/user-service/unix/",
+      "${sudo} sh reinstall.sh",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
+      "cd ${output}/security-service/unix/",
+      "${sudo} sh reinstall.sh",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
+      "cd ${output}/faculty-service/unix/",
+      "${sudo} sh reinstall.sh",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
+      "cd ${output}/student-service/unix/",
+      "${sudo} sh reinstall.sh",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
+      "cd ${output}/time-service/unix/",
+      "${sudo} sh reinstall.sh",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
+      "cd ${output}/file-service/unix/",
+      "${sudo} sh reinstall.sh",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
+      "cd ${output}/export-service/unix/",
+      "${sudo} sh reinstall.sh",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
+      "cd ${output}/school-config-service/unix/",
+      "${sudo} sh reinstall.sh",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
+      "cd ${output}/import-service/unix/",
+      "${sudo} sh reinstall.sh",
       "${sudo} sh ${projectScripts}/clear-ram.sh",
       "cd ${root}/gds-ms-generator",
       "git checkout gds-assumption"
@@ -82,12 +107,15 @@
           "#DBPATH": "${dbPath}/user-db/",
           "#REPO": "https://github.com/great-design-and-systems/user-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.2"
+          "#IMAGE_SERVICE_TAG": "0.3"
         },
         "mounts": {
           "/app/log": "${output}/user-log/",
           "/data/db": "${dbPath}/user-db/",
           "/app/scripts/": "${output}/scripts/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
         }
       },
       {
@@ -98,13 +126,16 @@
           "#DBPATH": "${dbPath}/security-db/",
           "#REPO": "https://github.com/great-design-and-systems/security-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.2",
+          "#IMAGE_SERVICE_TAG": "0.3",
           "#SCHOOL_CONFIG_SERVICE_PORT": "NONE"
         },
         "mounts": {
           "/app/log": "${output}/security-log/",
           "/data/db": "${dbPath}/security-db/",
           "/app/scripts/": "${output}/scripts/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
         }
       },
       {
@@ -115,12 +146,15 @@
           "#DBPATH": "${dbPath}/faculty-db/",
           "#REPO": "https://github.com/great-design-and-systems/faculty-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.2"
+          "#IMAGE_SERVICE_TAG": "0.3"
         },
         "mounts": {
           "/app/log": "${output}/faculty-log/",
           "/data/db": "${dbPath}/faculty-db/",
           "/app/scripts/": "${output}/scripts/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
         }
       },
       {
@@ -131,12 +165,15 @@
           "#DBPATH": "${dbPath}/student-db/",
           "#REPO": "https://github.com/great-design-and-systems/student-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.2"
+          "#IMAGE_SERVICE_TAG": "0.3"
         },
         "mounts": {
           "/app/log": "${output}/student-log/",
           "/data/db": "${dbPath}/student-db/",
           "/app/scripts/": "${output}/scripts/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
         }
       },
       {
@@ -147,12 +184,15 @@
           "#DBPATH": "${dbPath}/time-db/",
           "#REPO": "https://github.com/great-design-and-systems/time-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.2"
+          "#IMAGE_SERVICE_TAG": "0.3"
         },
         "mounts": {
           "/app/log": "${output}/time-log/",
           "/data/db": "${dbPath}/time-db/",
           "/app/scripts/": "${output}/scripts/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
         }
       },
       {
@@ -163,12 +203,15 @@
           "#DBPATH": "${dbPath}/file-db/",
           "#REPO": "https://github.com/great-design-and-systems/file-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.2"
+          "#IMAGE_SERVICE_TAG": "0.3"
         },
         "mounts": {
           "/app/log": "${output}/file-log/",
           "/data/db": "${dbPath}/file-db/",
           "/app/scripts/": "${output}/scripts/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
         }
       },
       {
@@ -179,12 +222,15 @@
           "#DBPATH": "${dbPath}/export-db/",
           "#REPO": "https://github.com/great-design-and-systems/export-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.2"
+          "#IMAGE_SERVICE_TAG": "0.3"
         },
         "mounts": {
           "/app/log": "${output}/export-log/",
           "/data/db": "${dbPath}/export-db/",
           "/app/scripts/": "${output}/scripts/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
         }
       },
       {
@@ -214,7 +260,7 @@
           "#DBPATH": "${dbPath}/import-db/",
           "#REPO": "https://github.com/great-design-and-systems/import-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.2"
+          "#IMAGE_SERVICE_TAG": "0.3"
         },
         "links": [
           "faculty_service",
@@ -225,6 +271,9 @@
           "/app/log": "${output}/import-log/",
           "/data/db": "${dbPath}/import-db/",
           "/app/scripts/": "${output}/scripts/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
         }
       },
       {
@@ -271,7 +320,7 @@
           "#IMAGE_SERVICE_TAG": "0.3"
         },
         "environments": {
-          "API_HOST": "http://localhost:8080"
+          "API_HOST": "${apiHost}"
         },
         "port": "9005:3000",
         "mounts": {
@@ -295,7 +344,7 @@
           "#IMAGE_SERVICE_TAG": "0.3"
         },
         "environments": {
-          "API_HOST": "http://localhost:8080"
+          "API_HOST": "${apiHost}"
         },
         "port": "9006:3000",
         "mounts": {
