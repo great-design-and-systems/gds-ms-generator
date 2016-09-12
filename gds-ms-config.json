@@ -10,7 +10,7 @@
   },
   "files": {
     "${output}/scripts/start.sh": [
-      "mongod --fork --logpath=/app/db/log/mongod.log && proxychains forever /host/index.js --max_inlined_source_size=610"
+      "mongod --fork --logpath=/app/db/log/mongod.log && forever /host/index.js --max_inlined_source_size=610"
     ],
     "${output}/client-scripts/start.sh": [
       "mongod --fork --logpath=/app/db/log/mongod.log",
