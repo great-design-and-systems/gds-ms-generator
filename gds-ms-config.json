@@ -23,7 +23,7 @@
     "${output}/school-scripts/start.sh": [
       "mongod --fork --logpath=/app/db/log/mongod.log",
       "mongorestore -h localhost:27017 -d service_db /host/imports/",
-      "forever /host/index.js"
+      "forever /host/index.js --max_inlined_source_size=610"
     ],
     "${root}/update.sh": [
       "cd ${root}/gds-ms-generator",
