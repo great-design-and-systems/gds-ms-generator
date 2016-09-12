@@ -13,13 +13,13 @@
   },
   "files": {
     "${output}/scripts/start.sh": [
-      "mongod --fork --logpath=/app/db/log/mongod.log && echo $(forever /host/index.js ${maxInlined}) > '/app/log/system-out.log'"
+      "mongod --fork --logpath=/app/db/log/mongod.log && forever /host/index.js ${maxInlined}"
     ],
     "${output}/client-scripts/start.sh": [
       "mongod --fork --logpath=/app/db/log/mongod.log",
       "cd /host",
       "gulp",
-      "echo $(forever node_modules/.bin/http-server ${maxInlined}) > '/app/log/system-out.log'"
+      "forever node_modules/.bin/http-server ${maxInlined}"
     ],
     "${root}/start.sh": [
       "cd ${root}/gds-ms-generator",
