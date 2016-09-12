@@ -6,7 +6,8 @@
     "root": "/home/gds-server",
     "dbPath": "${root}/db-path",
     "output": "${root}/output",
-    "sudo": "echo '${password}' | sudo -kS"
+    "sudo": "echo '${password}' | sudo -kS",
+    "projectScripts": "${root}/gds-ms-generator/scripts"
   },
   "files": {
     "${output}/scripts/start.sh": [
@@ -28,15 +29,19 @@
       "${sudo} npm start",
       "cd ${output}/school-config-service/unix",
       "${sudo} sh install.sh",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
       "cd ${output}/gds-ts-api/unix/",
       "${sudo} sh uninstall.sh",
       "${sudo} sh install.sh",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
       "cd ${output}/gds-lrts/unix/",
       "${sudo} sh uninstall.sh",
       "${sudo} sh install.sh",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
       "cd ${output}/gds-terminal/unix/",
       "${sudo} sh uninstall.sh",
       "${sudo} sh install.sh",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
       "cd ${root}/gds-ms-generator",
       "git checkout gds-assumption"
     ]
