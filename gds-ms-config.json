@@ -25,12 +25,7 @@
       "sh run.sh"
     ],
     "${root}/run.sh": [
-      "cd ${root}/gds-ms-generator",
-      "${sudo} git fetch --all",
-      "${sudo} git checkout -b gds-assumption origin/gds-assumption",
-      "${sudo} git pull",
-      "${sudo} npm start",
-      "sh ${root}/start.sh"
+      ""
     ]
   },
   "containers": {
