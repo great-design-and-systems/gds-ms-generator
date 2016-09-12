@@ -2,6 +2,7 @@
   "name": "gds-ms-project",
   "path": "${output}",
   "properties": {
+    "proxy": "proxy.assumption.edu.ph:3128",
     "host": "192.168.1.10",
     "apiHost": "http://${host}:8080",
     "password": "gds",
