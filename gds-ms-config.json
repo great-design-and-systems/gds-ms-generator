@@ -29,6 +29,7 @@
       "forever /host/index.js ${maxInlined}"
     ],
     "${root}/update.sh": [
+      "${sudo} rm -R ${output}",
       "cd ${root}/gds-ms-generator",
       "${sudo} npm start",
       "cd ${output}/school-config-service/unix",
