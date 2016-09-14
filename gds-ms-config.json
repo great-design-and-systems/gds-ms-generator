@@ -56,7 +56,7 @@
       "RUN[0]": "apt-get update",
       "RUN[1]": "git clone #REPO /host && npm config set logfd /app/log/system.log",
       "WORKDIR": "/host",
-      "RUN[2]": "echo \"{\"proxy\":\"http://${proxy}\", \"https-proxy\":\"http://${proxy}\"}\" > .bowerrc",
+      "RUN[2]": "echo hello",
       "RUN[3]": "npm install",
       "RUN[4]": "bower --allow-root update -V",
       "ENV[0]": "PORT 3000",
