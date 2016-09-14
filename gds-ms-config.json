@@ -102,6 +102,7 @@
       "npm install pump"
     ],
     "${root}/init-bower.sh": [
+      "cd ${output}",
       "${bower} install angular:1.5.8",
       "${bower} install socket.io-client:1.4.8",
       "${bower} install angular-resource:1.5.8",
@@ -135,8 +136,8 @@
       "RUN[0]": "apt-get update",
       "RUN[1]": "git clone #REPO /host && npm config set logfd /app/log/system.log",
       "WORKDIR": "/host",
-      "RUN[2]": "echo hello",
-      "RUN[3]": "echo hello2",
+      "RUN[2]": "mkdir node_modules",
+      "RUN[3]": "mkdir bower_components",
       "RUN[4]": "echo hello3",
       "ENV[0]": "PORT 3000",
       "ENV[1]": "APP_LOG /app/log/system.log",
@@ -163,7 +164,9 @@
         "mounts": {
           "/app/log": "${output}/user-log/",
           "/data/db": "${dbPath}/user-db/",
-          "/app/scripts/": "${output}/scripts/"
+          "/app/scripts/": "${output}/scripts/",
+          "/host/node_modules/": "${output}/node_modules/",
+          "/host/bower_components/": "${output}/bower_components/"
         },
         "docker": {
           "cmd": "npm run container-start"
@@ -183,7 +186,9 @@
         "mounts": {
           "/app/log": "${output}/security-log/",
           "/data/db": "${dbPath}/security-db/",
-          "/app/scripts/": "${output}/scripts/"
+          "/app/scripts/": "${output}/scripts/",
+          "/host/node_modules/": "${output}/node_modules/",
+          "/host/bower_components/": "${output}/bower_components/"
         },
         "environments": {
           "ALLOWED_HOSTS": "${host}"
@@ -205,7 +210,9 @@
         "mounts": {
           "/app/log": "${output}/faculty-log/",
           "/data/db": "${dbPath}/faculty-db/",
-          "/app/scripts/": "${output}/scripts/"
+          "/app/scripts/": "${output}/scripts/",
+          "/host/node_modules/": "${output}/node_modules/",
+          "/host/bower_components/": "${output}/bower_components/"
         },
         "docker": {
           "cmd": "npm run container-start"
@@ -224,7 +231,9 @@
         "mounts": {
           "/app/log": "${output}/student-log/",
           "/data/db": "${dbPath}/student-db/",
-          "/app/scripts/": "${output}/scripts/"
+          "/app/scripts/": "${output}/scripts/",
+          "/host/node_modules/": "${output}/node_modules/",
+          "/host/bower_components/": "${output}/bower_components/"
         },
         "docker": {
           "cmd": "npm run container-start"
@@ -243,7 +252,9 @@
         "mounts": {
           "/app/log": "${output}/time-log/",
           "/data/db": "${dbPath}/time-db/",
-          "/app/scripts/": "${output}/scripts/"
+          "/app/scripts/": "${output}/scripts/",
+          "/host/node_modules/": "${output}/node_modules/",
+          "/host/bower_components/": "${output}/bower_components/"
         },
         "docker": {
           "cmd": "npm run container-start"
@@ -262,7 +273,9 @@
         "mounts": {
           "/app/log": "${output}/file-log/",
           "/data/db": "${dbPath}/file-db/",
-          "/app/scripts/": "${output}/scripts/"
+          "/app/scripts/": "${output}/scripts/",
+          "/host/node_modules/": "${output}/node_modules/",
+          "/host/bower_components/": "${output}/bower_components/"
         },
         "docker": {
           "cmd": "npm run container-start"
@@ -281,7 +294,9 @@
         "mounts": {
           "/app/log": "${output}/export-log/",
           "/data/db": "${dbPath}/export-db/",
-          "/app/scripts/": "${output}/scripts/"
+          "/app/scripts/": "${output}/scripts/",
+          "/host/node_modules/": "${output}/node_modules/",
+          "/host/bower_components/": "${output}/bower_components/"
         },
         "docker": {
           "cmd": "npm run container-start"
@@ -300,7 +315,9 @@
         "mounts": {
           "/app/log": "${output}/school-config-log/",
           "/data/db": "${dbPath}/school-config-db/",
-          "/app/scripts/": "${output}/scripts/"
+          "/app/scripts/": "${output}/scripts/",
+          "/host/node_modules/": "${output}/node_modules/",
+          "/host/bower_components/": "${output}/bower_components/"
         },
         "docker": {
           "cmd": "npm run container-start"
@@ -324,7 +341,9 @@
         "mounts": {
           "/app/log": "${output}/import-log/",
           "/data/db": "${dbPath}/import-db/",
-          "/app/scripts/": "${output}/scripts/"
+          "/app/scripts/": "${output}/scripts/",
+          "/host/node_modules/": "${output}/node_modules/",
+          "/host/bower_components/": "${output}/bower_components/"
         },
         "docker": {
           "cmd": "npm run container-start"
@@ -356,7 +375,9 @@
         "mounts": {
           "/app/log": "${output}/gds-ts-api-log/",
           "/data/db": "${dbPath}/gds-ts-api-db/",
-          "/app/scripts/": "${output}/scripts/"
+          "/app/scripts/": "${output}/scripts/",
+          "/host/node_modules/": "${output}/node_modules/",
+          "/host/bower_components/": "${output}/bower_components/"
         },
         "docker": {
           "cmd": "npm run container-start"
@@ -380,7 +401,9 @@
         "mounts": {
           "/app/log": "${output}/gds-terminal-log/",
           "/data/db": "${dbPath}/gds-terminal-db/",
-          "/app/scripts/": "${output}/client-scripts/"
+          "/app/scripts/": "${output}/client-scripts/",
+          "/host/node_modules/": "${output}/node_modules/",
+          "/host/bower_components/": "${output}/bower_components/"
         },
         "docker": {
           "cmd": "npm run container-start"
@@ -404,7 +427,9 @@
         "mounts": {
           "/app/log": "${output}/gds-lrts-log/",
           "/data/db": "${dbPath}/gds-lrts-db/",
-          "/app/scripts/": "${output}/client-scripts/"
+          "/app/scripts/": "${output}/client-scripts/",
+          "/host/node_modules/": "${output}/node_modules/",
+          "/host/bower_components/": "${output}/bower_components/"
         },
         "docker": {
           "cmd": "npm run container-start"
