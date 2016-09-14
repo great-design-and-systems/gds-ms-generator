@@ -3,7 +3,7 @@
   "path": "${output}",
   "properties": {
     "proxy": "proxy.assumption.edu.ph:3128",
-    "host": "192.168.160.161",
+    "host": "192.168.1.6",
     "apiHost": "http://${host}:8080",
     "password": "gds",
     "root": "/home/gds-server",
