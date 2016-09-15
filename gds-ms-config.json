@@ -21,6 +21,7 @@
     "${output}/client-scripts/start.sh": [
       "mongod --fork --logpath=/app/db/log/mongod.log",
       "cd /host",
+      "npm rebuild node-sass",
       "gulp",
       "forever node_modules/.bin/http-server ${maxInlined}"
     ],
