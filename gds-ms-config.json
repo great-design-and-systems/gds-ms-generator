@@ -101,7 +101,8 @@
       "npm install gulp-uglifycss",
       "npm install gulp-server",
       "npm install node-sass",
-      "npm install pump"
+      "npm install pump",
+      "npm install csv-parse"
     ],
     "${root}/init-bower.sh": [
       "cd ${output}",
