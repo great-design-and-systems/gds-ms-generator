@@ -284,6 +284,9 @@
         },
         "docker": {
           "cmd": "npm run container-start"
+        },
+        "environments": {
+          "TEMP_DIR": "/app"
         }
       },
       {
