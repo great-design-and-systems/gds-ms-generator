@@ -63,6 +63,7 @@
       "npm install gulp-jshint",
       "npm install gulp-mocha",
       "npm install http",
+      "npm install http-server",
       "npm install jshint",
       "npm install jshint-stylish",
       "npm install lodash",
