@@ -8,13 +8,16 @@ function execute(configFile, callback) {
                 var regex = new RegExp('\\${' + key + '}', 'g');
                 lodash.forEach(configFile.properties, function (fieldValue, field) {
                     if (key !== field) {
-                        value = value.replace(new RegExp('\\${' + field + '}', 'g'), fieldValue);
-                    } else if (field === 'today') {
-                        value = value.replace(new RegExp('\\${' + field + '}', 'g'), new Date().getTime());
+                        if (field.indexOf('*') === 0) {
+                            value = value.replace(new RegExp('\\${' + field + '}', 'g'), eval(fieldValue));
+                        } else {
+                            value = value.replace(new RegExp('\\${' + field + '}', 'g'), fieldValue);
+                        }
+
                     }
                 });
-                if (key === 'today') {
-                    stringifiedJSON = stringifiedJSON.replace(regex, new Date().getTime());
+                if (key.indexOf('*') === 0) {
+                    stringifiedJSON = stringifiedJSON.replace(regex, eval(value));
                 } else {
                     stringifiedJSON = stringifiedJSON.replace(regex, value);
                 }

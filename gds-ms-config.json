@@ -12,7 +12,8 @@
     "sudo": "echo '${password}' | sudo -kS",
     "projectScripts": "${root}/gds-ms-generator/scripts",
     "maxInlined": "--max_inlined_source_size=610",
-    "bower": "${root}/output/node_modules/.bin/bower"
+    "bower": "${root}/output/node_modules/.bin/bower",
+    "*today": "new Date().getTime()"
   },
   "files": {
     "${output}/scripts/start.sh": [
