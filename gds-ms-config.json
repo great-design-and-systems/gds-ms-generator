@@ -140,7 +140,7 @@
       "FROM": "rickzx98/gds-ms:#IMAGE_SERVICE_TAG",
       "MAINTAINER": "rickzx98@gmail.com",
       "RUN[0]": "apt-get update",
-      "RUN[1]": "git clone #REPO?cache=${*today} /host && npm config set logfd /app/log/system.log",
+      "RUN[1]": "git clone #REPO?cache=${today} /host && npm config set logfd /app/log/system.log",
       "WORKDIR": "/host",
       "RUN[2]": "mkdir node_modules",
       "RUN[3]": "mkdir bower_components",
