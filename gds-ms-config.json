@@ -28,14 +28,32 @@
     ],
     "${root}/start.sh": [
       "cd ${root}/gds-ms-generator",
-      "git pull",
-      "npm start",
+      "${sudo} git pull",
+      "${sudo} npm start",
+      "sh ${root}/run.sh"
+    ],
+    "${root}/start-with-sql-import.sh": [
+      "cd ${root}/gds-ms-generator",
+      "${sudo} git pull",
+      "${sudo} npm start",
       "sh ${root}/run.sh"
     ],
     "${root}/run.sh": [
       "cd ${root}/gds-ms-generator",
       "${sudo} git fetch --all",
       "${sudo} git checkout -b gds-assumption_update_2 origin/gds-assumption_update",
+      "${sudo} git pull",
+      "${sudo} npm start",
+      "cd ${root}",
+      "${sudo} sh update.sh",
+      "cd ${output}",
+      "${sudo} sh restart.sh",
+      "${sudo} rm ${root}/update.sh"
+    ],
+    "${root}/run-with-sql-import.sh": [
+      "cd ${root}/gds-ms-generator",
+      "${sudo} git fetch --all",
+      "${sudo} git checkout -b gds-assumption_update_2 origin/gds-assumption_update_with_sql_imports",
       "${sudo} git pull",
       "${sudo} npm start",
       "cd ${root}",
