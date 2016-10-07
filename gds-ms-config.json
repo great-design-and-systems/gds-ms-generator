@@ -44,6 +44,9 @@
       "cd ${root}",
       "sh init-modules.sh",
       "sh init-bower.sh",
+      "cd ${output}",
+      "${sudo} sh uninstall.sh",
+      "${sudo} sh install.sh",
       "cd ${root}/gds-ms-generator",
       "git checkout gds-assumption"
     ],
