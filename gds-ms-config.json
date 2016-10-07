@@ -401,7 +401,7 @@
         "mounts": {
           "/app/log": "${output}/school-config-log/",
           "/data/db": "${dbPath}/school-config-db/",
-          "/app/scripts/": "${output}/scripts/",
+          "/app/school-scripts/": "${output}/scripts/",
           "/host/node_modules/": "${output}/node_modules/",
           "/host/bower_components/": "${output}/bower_components/"
         },
