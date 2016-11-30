@@ -19,6 +19,9 @@
     "${output}/scripts/start.sh": [
       "mongod --fork --logpath=/app/db/log/mongod.log && forever /host/index.js ${maxInlined}"
     ],
+    "${output}/scripts-es6/start.sh": [
+      "mongod --fork --logpath=/app/db/log/mongod.log && forever /host/dist/index.js ${maxInlined}"
+    ],
     "${output}/client-scripts/start.sh": [
       "mongod --fork --logpath=/app/db/log/mongod.log",
       "cd /host",
@@ -443,6 +446,29 @@
         "docker": {
           "cmd": "npm run container-start"
         }
+      },
+      {
+        "priority": "8",
+        "name": "gds-events",
+        "database": false,
+        "parameters": {
+          "#DOMAIN_SERVICE": "gds_events",
+          "#DBPATH": "${dbPath}/gds-events-db/",
+          "#REPO": "https://github.com/great-design-and-systems/gds-events-service.git",
+          "#MAINTAINER": "rickzx98@gmail.com",
+          "#IMAGE_SERVICE_TAG": "0.3"
+        },
+        "mounts": {
+          "/app/log": "${output}/file-log/",
+          "/data/db": "${dbPath}/file-db/",
+          "/app/scripts/": "${output}/scripts-es6/",
+          "/host/node_modules/": "${output}/node_modules/",
+          "/host/bower_components/": "${output}/bower_components/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
+        },
+        "port": "9007:3000"
       }
     ]
   }
