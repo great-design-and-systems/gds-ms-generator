@@ -108,7 +108,11 @@
       "npm install pump",
       "npm install csv-parse",
       "npm install batchflow",
-      "npm install jsonwebtoken"
+      "npm install jsonwebtoken",
+      "npm install babel-core",
+      "npm install babel-loader",
+      "npm install babel-preset-es2015",
+      "npm install gds-config"
     ],
     "${root}/init-bower.sh": [
       "cd ${output}",
