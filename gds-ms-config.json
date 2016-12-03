@@ -396,7 +396,8 @@
           "cmd": "npm run container-start"
         },
         "environments": {
-          "TEMP_DIR": "/app"
+          "TEMP_DIR": "/app",
+          "LOGGER_SERVICE_PORT":"https://gds-logger.herokuapp.com"
         }
       },
       {
