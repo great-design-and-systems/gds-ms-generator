@@ -364,6 +364,46 @@
       },
       {
         "priority": "11",
+        "name": "gds-events",
+        "parameters": {
+          "#DOMAIN_SERVICE": "gds_events",
+          "#DBPATH": "${dbPath}/gds-events-db/",
+          "#REPO": "https://github.com/great-design-and-systems/gds-events-service.git",
+          "#MAINTAINER": "rickzx98@gmail.com",
+          "#IMAGE_SERVICE_TAG": "0.3"
+        },
+        "mounts": {
+          "/app/log": "${output}/gds-events-log/",
+          "/data/db": "${dbPath}/gds-events-db/",
+          "/app/scripts/": "${output}/scripts-es6/",
+          "/host/node_modules/": "${output}/node_modules/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
+        }
+      },
+      {
+        "priority": "10",
+        "name": "gds-event-processor",
+        "parameters": {
+          "#DOMAIN_SERVICE": "gds_event_processor",
+          "#DBPATH": "${dbPath}/gds-events-db/",
+          "#REPO": "https://github.com/great-design-and-systems/gds-event-processor.git",
+          "#MAINTAINER": "rickzx98@gmail.com",
+          "#IMAGE_SERVICE_TAG": "0.3"
+        },
+        "mounts": {
+          "/app/log": "${output}/gds-event-processor-log/",
+          "/data/db": "${dbPath}/gds-event-processor-db/",
+          "/app/scripts/": "${output}/scripts-es6/",
+          "/host/node_modules/": "${output}/node_modules/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
+        }
+      },
+      {
+        "priority": "9",
         "name": "gds-ts-api",
         "database": false,
         "parameters": {
@@ -397,11 +437,11 @@
         },
         "environments": {
           "TEMP_DIR": "/app",
-          "LOGGER_SERVICE_PORT":"https://gds-logger.herokuapp.com"
+          "LOGGER_SERVICE_PORT": "https://gds-logger.herokuapp.com"
         }
       },
       {
-        "priority": "10",
+        "priority": "8",
         "name": "gds-terminal",
         "database": false,
         "parameters": {
@@ -427,7 +467,7 @@
         }
       },
       {
-        "priority": "9",
+        "priority": "7",
         "name": "gds-lrts",
         "database": false,
         "parameters": {
@@ -451,29 +491,6 @@
         "docker": {
           "cmd": "npm run container-start"
         }
-      },
-      {
-        "priority": "8",
-        "name": "gds-events",
-        "database": false,
-        "parameters": {
-          "#DOMAIN_SERVICE": "gds_events",
-          "#DBPATH": "${dbPath}/gds-events-db/",
-          "#REPO": "https://github.com/great-design-and-systems/gds-events-service.git",
-          "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.3"
-        },
-        "mounts": {
-          "/app/log": "${output}/file-log/",
-          "/data/db": "${dbPath}/file-db/",
-          "/app/scripts/": "${output}/scripts-es6/",
-          "/host/node_modules/": "${output}/node_modules/",
-          "/host/bower_components/": "${output}/bower_components/"
-        },
-        "docker": {
-          "cmd": "npm run container-start"
-        },
-        "port": "9007:3000"
       }
     ]
   }
