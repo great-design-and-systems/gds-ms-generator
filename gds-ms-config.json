@@ -20,6 +20,7 @@
       "mongod --fork --logpath=/app/db/log/mongod.log && forever /host/index.js ${maxInlined}"
     ],
     "${output}/scripts-es6/start.sh": [
+      "cd /host && npm run prestart",
       "mongod --fork --logpath=/app/db/log/mongod.log && forever /host/dist/index.js ${maxInlined}"
     ],
     "${output}/client-scripts/start.sh": [
