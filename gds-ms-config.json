@@ -422,7 +422,9 @@
           "file_service",
           "export_service",
           "import_service",
-          "school_config_service"
+          "school_config_service",
+          "gds_events",
+          "gds_event_processor"
         ],
         "port": "9000:3000",
         "mounts": {
