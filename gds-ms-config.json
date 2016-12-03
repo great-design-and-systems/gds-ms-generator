@@ -364,17 +364,17 @@
       },
       {
         "priority": "11",
-        "name": "gds-events",
+        "name": "gds-event",
         "parameters": {
-          "#DOMAIN_SERVICE": "gds_events",
-          "#DBPATH": "${dbPath}/gds-events-db/",
-          "#REPO": "https://github.com/great-design-and-systems/gds-events-service.git",
+          "#DOMAIN_SERVICE": "gds_event",
+          "#DBPATH": "${dbPath}/gds-event-db/",
+          "#REPO": "https://github.com/great-design-and-systems/gds-event-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.3"
         },
         "mounts": {
-          "/app/log": "${output}/gds-events-log/",
-          "/data/db": "${dbPath}/gds-events-db/",
+          "/app/log": "${output}/gds-event-log/",
+          "/data/db": "${dbPath}/gds-event-db/",
           "/app/scripts/": "${output}/scripts-es6/",
           "/host/node_modules/": "${output}/node_modules/"
         },
