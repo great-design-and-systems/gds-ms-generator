@@ -166,6 +166,26 @@
     },
     "services": [
       {
+        "priority": "21",
+        "name": "logger-service",
+        "parameters": {
+          "#DOMAIN_SERVICE": "logger_service",
+          "#DBPATH": "${dbPath}/logger-db/",
+          "#REPO": "https://github.com/great-design-and-systems/gds-logger.git",
+          "#MAINTAINER": "rickzx98@gmail.com",
+          "#IMAGE_SERVICE_TAG": "0.3"
+        },
+        "mounts": {
+          "/app/log": "${output}/logger-log/",
+          "/data/db": "${dbPath}/logger-db/",
+          "/app/scripts/": "${output}/scripts-es6/",
+          "/host/node_modules/": "${output}/node_modules/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
+        }
+      },
+      {
         "priority": "20",
         "name": "user-service",
         "parameters": {
@@ -181,31 +201,6 @@
           "/app/scripts/": "${output}/scripts/",
           "/host/node_modules/": "${output}/node_modules/",
           "/host/bower_components/": "${output}/bower_components/"
-        },
-        "docker": {
-          "cmd": "npm run container-start"
-        }
-      },
-      {
-        "priority": "19",
-        "name": "security-service",
-        "parameters": {
-          "#DOMAIN_SERVICE": "security_service",
-          "#DBPATH": "${dbPath}/security-db/",
-          "#REPO": "https://github.com/great-design-and-systems/security-service.git",
-          "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.3",
-          "#SCHOOL_CONFIG_SERVICE_PORT": "NONE"
-        },
-        "mounts": {
-          "/app/log": "${output}/security-log/",
-          "/data/db": "${dbPath}/security-db/",
-          "/app/scripts/": "${output}/scripts/",
-          "/host/node_modules/": "${output}/node_modules/",
-          "/host/bower_components/": "${output}/bower_components/"
-        },
-        "environments": {
-          "ALLOWED_HOSTS": "${host}"
         },
         "docker": {
           "cmd": "npm run container-start"
@@ -254,116 +249,6 @@
         }
       },
       {
-        "priority": "16",
-        "name": "time-service",
-        "parameters": {
-          "#DOMAIN_SERVICE": "time_service",
-          "#DBPATH": "${dbPath}/time-db/",
-          "#REPO": "https://github.com/great-design-and-systems/time-service.git",
-          "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.3"
-        },
-        "mounts": {
-          "/app/log": "${output}/time-log/",
-          "/data/db": "${dbPath}/time-db/",
-          "/app/scripts/": "${output}/scripts/",
-          "/host/node_modules/": "${output}/node_modules/",
-          "/host/bower_components/": "${output}/bower_components/"
-        },
-        "docker": {
-          "cmd": "npm run container-start"
-        }
-      },
-      {
-        "priority": "15",
-        "name": "file-service",
-        "parameters": {
-          "#DOMAIN_SERVICE": "file_service",
-          "#DBPATH": "${dbPath}/file-db/",
-          "#REPO": "https://github.com/great-design-and-systems/file-service.git",
-          "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.3"
-        },
-        "mounts": {
-          "/app/log": "${output}/file-log/",
-          "/data/db": "${dbPath}/file-db/",
-          "/app/scripts/": "${output}/scripts/",
-          "/host/node_modules/": "${output}/node_modules/",
-          "/host/bower_components/": "${output}/bower_components/"
-        },
-        "docker": {
-          "cmd": "npm run container-start"
-        }
-      },
-      {
-        "priority": "14",
-        "name": "export-service",
-        "parameters": {
-          "#DOMAIN_SERVICE": "export_service",
-          "#DBPATH": "${dbPath}/export-db/",
-          "#REPO": "https://github.com/great-design-and-systems/export-service.git",
-          "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.3"
-        },
-        "mounts": {
-          "/app/log": "${output}/export-log/",
-          "/data/db": "${dbPath}/export-db/",
-          "/app/scripts/": "${output}/scripts/",
-          "/host/node_modules/": "${output}/node_modules/",
-          "/host/bower_components/": "${output}/bower_components/"
-        },
-        "docker": {
-          "cmd": "npm run container-start"
-        }
-      },
-      {
-        "priority": "13",
-        "name": "school-config-service",
-        "parameters": {
-          "#DOMAIN_SERVICE": "school_config_service",
-          "#DBPATH": "${dbPath}/school-config-db/",
-          "#REPO": "-b gds-assumption --single-branch https://github.com/great-design-and-systems/school-config-service.git",
-          "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.3"
-        },
-        "mounts": {
-          "/app/log": "${output}/school-config-log/",
-          "/data/db": "${dbPath}/school-config-db/",
-          "/app/scripts/": "${output}/scripts/",
-          "/host/node_modules/": "${output}/node_modules/",
-          "/host/bower_components/": "${output}/bower_components/"
-        },
-        "docker": {
-          "cmd": "npm run container-start"
-        }
-      },
-      {
-        "priority": "12",
-        "name": "import-service",
-        "parameters": {
-          "#DOMAIN_SERVICE": "import_service",
-          "#DBPATH": "${dbPath}/import-db/",
-          "#REPO": "https://github.com/great-design-and-systems/import-service.git",
-          "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.3"
-        },
-        "links": [
-          "faculty_service",
-          "student_service",
-          "file_service"
-        ],
-        "mounts": {
-          "/app/log": "${output}/import-log/",
-          "/data/db": "${dbPath}/import-db/",
-          "/app/scripts/": "${output}/scripts/",
-          "/host/node_modules/": "${output}/node_modules/",
-          "/host/bower_components/": "${output}/bower_components/"
-        },
-        "docker": {
-          "cmd": "npm run container-start"
-        }
-      },
-      {
         "priority": "11",
         "name": "gds-event",
         "parameters": {
@@ -381,7 +266,10 @@
         },
         "docker": {
           "cmd": "npm run container-start"
-        }
+        },
+        "links": [
+          "logger-service"
+        ]
       },
       {
         "priority": "10",
@@ -401,7 +289,10 @@
         },
         "docker": {
           "cmd": "npm run container-start"
-        }
+        },
+        "links": [
+          "logger-service"
+        ]
       },
       {
         "priority": "9",
@@ -415,15 +306,9 @@
           "#IMAGE_SERVICE_TAG": "0.3"
         },
         "links": [
-          "user_service",
-          "security_service",
+          "logger-service",
           "faculty_service",
-          "time_service",
           "student_service",
-          "file_service",
-          "export_service",
-          "import_service",
-          "school_config_service",
           "gds_events",
           "gds_event_processor"
         ],
@@ -439,60 +324,7 @@
           "cmd": "npm run container-start"
         },
         "environments": {
-          "TEMP_DIR": "/app",
-          "LOGGER_SERVICE_PORT": "https://gds-logger.herokuapp.com"
-        }
-      },
-      {
-        "priority": "8",
-        "name": "gds-terminal",
-        "database": false,
-        "parameters": {
-          "#DOMAIN_SERVICE": "gds_terminal",
-          "#DBPATH": "${dbPath}/gds-terminal-db/",
-          "#REPO": "https://github.com/great-design-and-systems/gds-terminal.git",
-          "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.3"
-        },
-        "environments": {
-          "API_HOST": "${apiHost}"
-        },
-        "port": "9005:3000",
-        "mounts": {
-          "/app/log": "${output}/gds-terminal-log/",
-          "/data/db": "${dbPath}/gds-terminal-db/",
-          "/app/scripts/": "${output}/client-scripts/",
-          "/host/node_modules/": "${output}/node_modules/",
-          "/host/bower_components/": "${output}/bower_components/"
-        },
-        "docker": {
-          "cmd": "npm run container-start"
-        }
-      },
-      {
-        "priority": "7",
-        "name": "gds-lrts",
-        "database": false,
-        "parameters": {
-          "#DOMAIN_SERVICE": "gds_lrts",
-          "#DBPATH": "${dbPath}/gds-lrts-db/",
-          "#REPO": "https://github.com/great-design-and-systems/gds-lrts.git",
-          "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.3"
-        },
-        "environments": {
-          "API_HOST": "${apiHost}"
-        },
-        "port": "9006:3000",
-        "mounts": {
-          "/app/log": "${output}/gds-lrts-log/",
-          "/data/db": "${dbPath}/gds-lrts-db/",
-          "/app/scripts/": "${output}/client-scripts/",
-          "/host/node_modules/": "${output}/node_modules/",
-          "/host/bower_components/": "${output}/bower_components/"
-        },
-        "docker": {
-          "cmd": "npm run container-start"
+          "TEMP_DIR": "/app"
         }
       }
     ]
