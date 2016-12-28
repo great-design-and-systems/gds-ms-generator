@@ -207,7 +207,7 @@
         }
       },
       {
-        "priority": "18",
+        "priority": "19",
         "name": "faculty-service",
         "parameters": {
           "#DOMAIN_SERVICE": "faculty_service",
@@ -228,7 +228,7 @@
         }
       },
       {
-        "priority": "17",
+        "priority": "18",
         "name": "student-service",
         "parameters": {
           "#DOMAIN_SERVICE": "student_service",
@@ -249,7 +249,7 @@
         }
       },
       {
-        "priority": "11",
+        "priority": "17",
         "name": "event-service",
         "parameters": {
           "#DOMAIN_SERVICE": "event_service",
@@ -273,7 +273,7 @@
         ]
       },
       {
-        "priority": "10",
+        "priority": "16",
         "name": "event-processor",
         "parameters": {
           "#DOMAIN_SERVICE": "event_processor",
@@ -297,7 +297,7 @@
         ]
       },
       {
-        "priority": "9",
+        "priority": "15",
         "name": "gds-ts-api",
         "database": false,
         "parameters": {
