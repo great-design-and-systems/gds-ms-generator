@@ -113,7 +113,8 @@
       "npm install babel-core",
       "npm install babel-loader",
       "npm install babel-preset-es2015",
-      "npm install gds-config"
+      "npm install gds-config",
+      "npm install babel-cli"
     ],
     "${root}/init-bower.sh": [
       "cd ${output}",
@@ -173,7 +174,7 @@
           "#DBPATH": "${dbPath}/logger-service-db/",
           "#REPO": "https://github.com/great-design-and-systems/gds-logger.git",
           "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.3"
+          "#IMAGE_SERVICE_TAG": "0.4"
         },
         "mounts": {
           "/app/log": "${output}/logger-service-log/",
@@ -256,7 +257,7 @@
           "#DBPATH": "${dbPath}/event-service-db/",
           "#REPO": "https://github.com/great-design-and-systems/gds-event-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.3"
+          "#IMAGE_SERVICE_TAG": "0.4"
         },
 
         "mounts": {
@@ -280,7 +281,7 @@
           "#DBPATH": "${dbPath}/event-processor-db/",
           "#REPO": "https://github.com/great-design-and-systems/gds-event-processor.git",
           "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.3"
+          "#IMAGE_SERVICE_TAG": "0.4"
         },
         "mounts": {
           "/app/log": "${output}/event-processor-log/",
