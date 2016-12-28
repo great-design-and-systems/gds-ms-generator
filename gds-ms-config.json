@@ -170,14 +170,14 @@
         "name": "logger-service",
         "parameters": {
           "#DOMAIN_SERVICE": "logger_service",
-          "#DBPATH": "${dbPath}/logger-db/",
+          "#DBPATH": "${dbPath}/logger-service-db/",
           "#REPO": "https://github.com/great-design-and-systems/gds-logger.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.3"
         },
         "mounts": {
-          "/app/log": "${output}/logger-log/",
-          "/data/db": "${dbPath}/logger-db/",
+          "/app/log": "${output}/logger-service-log/",
+          "/data/db": "${dbPath}/logger-service-db/",
           "/app/scripts/": "${output}/scripts-es6/",
           "/host/node_modules/": "${output}/node_modules/"
         },
@@ -258,6 +258,7 @@
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.3"
         },
+
         "mounts": {
           "/app/log": "${output}/event-service-log/",
           "/data/db": "${dbPath}/event-service-db/",
