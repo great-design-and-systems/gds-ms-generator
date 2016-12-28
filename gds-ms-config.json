@@ -250,17 +250,17 @@
       },
       {
         "priority": "11",
-        "name": "gds-event",
+        "name": "event-service",
         "parameters": {
-          "#DOMAIN_SERVICE": "gds_event",
-          "#DBPATH": "${dbPath}/gds-event-db/",
+          "#DOMAIN_SERVICE": "event_service",
+          "#DBPATH": "${dbPath}/event-service-db/",
           "#REPO": "https://github.com/great-design-and-systems/gds-event-service.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.3"
         },
         "mounts": {
-          "/app/log": "${output}/gds-event-log/",
-          "/data/db": "${dbPath}/gds-event-db/",
+          "/app/log": "${output}/event-service-log/",
+          "/data/db": "${dbPath}/event-service-db/",
           "/app/scripts/": "${output}/scripts-es6/",
           "/host/node_modules/": "${output}/node_modules/"
         },
@@ -273,17 +273,17 @@
       },
       {
         "priority": "10",
-        "name": "gds-event-processor",
+        "name": "event-processor",
         "parameters": {
-          "#DOMAIN_SERVICE": "gds_event_processor",
-          "#DBPATH": "${dbPath}/gds-events-db/",
+          "#DOMAIN_SERVICE": "event_processor",
+          "#DBPATH": "${dbPath}/event-processor-db/",
           "#REPO": "https://github.com/great-design-and-systems/gds-event-processor.git",
           "#MAINTAINER": "rickzx98@gmail.com",
           "#IMAGE_SERVICE_TAG": "0.3"
         },
         "mounts": {
-          "/app/log": "${output}/gds-event-processor-log/",
-          "/data/db": "${dbPath}/gds-event-processor-db/",
+          "/app/log": "${output}/event-processor-log/",
+          "/data/db": "${dbPath}/event-processor-db/",
           "/app/scripts/": "${output}/scripts-es6/",
           "/host/node_modules/": "${output}/node_modules/"
         },
@@ -291,7 +291,8 @@
           "cmd": "npm run container-start"
         },
         "links": [
-          "logger_service"
+          "logger_service",
+          "event_service"
         ]
       },
       {
@@ -309,7 +310,7 @@
           "logger_service",
           "faculty_service",
           "student_service",
-          "gds_event",
+          "event_service",
           "gds_event_processor"
         ],
         "port": "9000:3000",
