@@ -306,10 +306,10 @@
           "#IMAGE_SERVICE_TAG": "0.3"
         },
         "links": [
-          "logger-service",
+          "logger_service",
           "faculty_service",
           "student_service",
-          "gds_events",
+          "gds_event",
           "gds_event_processor"
         ],
         "port": "9000:3000",
