@@ -6,7 +6,7 @@
     "host": "localhost",
     "apiHost": "http://${host}:8080",
     "password": "gds",
-    "root": "/home/gds-server",
+    "root": "/home/gds",
     "dbPath": "${root}/db-path",
     "output": "${root}/output",
     "sudo": "echo '${password}' | sudo -kS",
