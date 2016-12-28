@@ -268,7 +268,7 @@
           "cmd": "npm run container-start"
         },
         "links": [
-          "logger-service"
+          "logger_service"
         ]
       },
       {
@@ -291,7 +291,7 @@
           "cmd": "npm run container-start"
         },
         "links": [
-          "logger-service"
+          "logger_service"
         ]
       },
       {
