@@ -46,8 +46,6 @@
       "cd ${root}/gds-ms-generator",
       "${sudo} npm start",
       "cd ${root}",
-      "sh init-modules.sh",
-      "sh init-bower.sh",
       "cd ${output}",
       "${sudo} sh uninstall.sh",
       "${sudo} sh install.sh",
@@ -271,7 +269,7 @@
         "mounts": {
           "/app/log": "${output}/logger-log/",
           "/data/db": "${dbPath}/logger-db/",
-          "/app/scripts-es6/": "${output}/scripts/",
+          "/app/scripts/": "${output}/scripts-es6/",
           "/host/node_modules/": "${output}/node_modules/",
           "/host/bower_components/": "${output}/bower_components/"
         },
