@@ -223,6 +223,7 @@
       "\"resolutions\": {\"angular\": \"1.5.8\" } }"
     ],
     "${root}/init-bower.sh": [
+      "${sudo} chmod 777 ${output}",
       "cd ${output}",
       "${bower} install"
     ]
