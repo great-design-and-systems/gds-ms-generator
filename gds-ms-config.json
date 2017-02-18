@@ -183,6 +183,10 @@
       "npm install babel-preset-es2015",
       "${sudo} sh ${projectScripts}/clear-ram.sh",
       "npm install nodemon",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
+      "npm install stream-to",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
+      "npm install unirest",
       "${sudo} sh ${projectScripts}/clear-ram.sh"
     ],
     "${root}/output/bower.json": [
@@ -262,7 +266,7 @@
           "#DBPATH": "${dbPath}/logger-db/",
           "#REPO": "https://github.com/great-design-and-systems/gds-logger.git",
           "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.4"
+          "#IMAGE_SERVICE_TAG": "0.3"
         },
         "mounts": {
           "/app/log": "${output}/logger-log/",
