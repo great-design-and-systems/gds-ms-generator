@@ -264,7 +264,7 @@
           "#DBPATH": "${dbPath}/logger-db/",
           "#REPO": "https://github.com/great-design-and-systems/gds-logger.git",
           "#MAINTAINER": "rickzx98@gmail.com",
-          "#IMAGE_SERVICE_TAG": "0.3"
+          "#IMAGE_SERVICE_TAG": "0.4"
         },
         "mounts": {
           "/app/log": "${output}/logger-log/",
