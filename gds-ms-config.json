@@ -50,7 +50,7 @@
     "${root}/run.sh": [
       "cd ${root}/gds-ms-generator",
       "${sudo} git fetch --all",
-      "${sudo} git checkout -b gds-assumption_update_2 origin/gds-assumption_update",
+      "${sudo} git checkout -b gds-assumption_update_3 origin/gds-assumption_update",
       "${sudo} git pull",
       "${sudo} npm start",
       "cd ${root}",
