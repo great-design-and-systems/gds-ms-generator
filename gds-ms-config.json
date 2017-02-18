@@ -31,7 +31,7 @@
       "mongorestore -h localhost:27017 -d service_db /host/imports/",
       "forever /host/index.js ${maxInlined}"
     ],
-    "${output}/scripts-es6/start.sh": [
+    "${output}/scripts-es-six/start.sh": [
       "cd /host && npm run prestart",
       "mongod --fork --logpath=/app/db/log/mongod.log && forever /host/dist/index.js ${maxInlined}"
     ],
@@ -269,7 +269,7 @@
         "mounts": {
           "/app/log": "${output}/logger-log/",
           "/data/db": "${dbPath}/logger-db/",
-          "/app/scripts/": "${output}/scripts-es6/",
+          "/app/scripts/": "${output}/scripts-es-six/",
           "/host/node_modules/": "${output}/node_modules/",
           "/host/bower_components/": "${output}/bower_components/"
         },
