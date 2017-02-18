@@ -5,6 +5,7 @@ var SetGdsMsConfigProperties = require('./set-gds-ms-config-properties');
 function execute(callback) {
     jsonFile.readFile(CONFIG_FILE, function(err, file) {
         if (err) {
+            console.log(err);
             callback({
                 message: 'Failed to open file ' + CONFIG_FILE
             });

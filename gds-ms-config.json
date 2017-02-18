@@ -31,6 +31,10 @@
       "mongorestore -h localhost:27017 -d service_db /host/imports/",
       "forever /host/index.js ${maxInlined}"
     ],
+    "${output}/scripts-es6/start.sh": [
+      "cd /host && npm run prestart",
+      "mongod --fork --logpath=/app/db/log/mongod.log && forever /host/dist/index.js ${maxInlined}"
+    ],
     "${root}/start.sh": [
       "cd ${root}/gds-ms-generator",
       "${sudo} git pull",
@@ -171,44 +175,54 @@
       "npm install batchflow",
       "${sudo} sh ${projectScripts}/clear-ram.sh",
       "npm install jsonwebtoken",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
+      "npm install gds-config",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
+      "npm install babel-cli",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
+      "npm install babel-preset-es2015",
+      "${sudo} sh ${projectScripts}/clear-ram.sh",
+      "npm install nodemon",
       "${sudo} sh ${projectScripts}/clear-ram.sh"
+    ],
+    "${root}/output/bower.json": [
+      "{\"name\": \"gds-ms-application-bower\",",
+      "\"description\": \"Production Bower Resource\",",
+      "\"authors\": [\"rickzx98@gmail.com\"],",
+      "\"license\": \"MIT\",",
+      "\"moduleType\": [\"globals\"],",
+      "\"private\": true,",
+      "\"ignore\": [\"**/.*\",",
+      "\"node_modules\",                            ",
+      "\"bower_components\",                        ",
+      "\"test\",                                    ",
+      "\"tests\"],                                  ",
+      "\"dependencies\": {                          ",
+      "\"angular\": \"1.5.8\",                      ",
+      "\"socket.io-client\": \"1.4.8\",             ",
+      "\"angular-resource\": \"1.5.8\",             ",
+      "\"angular-ui-router\": \"ui-router#0.3.1\",  ",
+      "\"angular-material\": \"1.0.9\",             ",
+      "\"jquery\": \"3.1.0\",                       ",
+      "\"font-awesome\": \"4.6.3\",                 ",
+      "\"angular-material-data-table\": \"0.10.9\", ",
+      "\"moment\": \"2.14.1\",                      ",
+      "\"lodash\": \"4.14.1\",                      ",
+      "\"angular-cookies\": \"1.5.8\",              ",
+      "\"angular-animate\": \"1.5.8\",              ",
+      "\"angular-aria\": \"1.5.8\",                 ",
+      "\"angular-messages\": \"1.5.8\",             ",
+      "\"md-color-picker\": \"0.2.6\",              ",
+      "\"tinycolor\": \"1.4.1\",                    ",
+      "\"ng-file-upload\": \"12.0.4\",              ",
+      "\"animate.css\": \"3.5.2\",                  ",
+      "\"font-awesome-animation\": \"0.0.9\",       ",
+      "\"bootstrap\": \"3.3.7\"},                   ",
+      "\"resolutions\": {\"angular\": \"1.5.8\" } }"
     ],
     "${root}/init-bower.sh": [
       "cd ${output}",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install angular",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install socket.io-client",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install angular-resource",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install angular-ui-router",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install angular-material",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install jquery",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install font-awesome",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install angular-material-data-table",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install moment",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install lodash",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install angular-cookies",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install md-color-picker",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install tinycolor",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install ng-file-upload",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install animate.css",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install font-awesome-animation",
-      "${sudo} sh ${projectScripts}/clear-ram.sh",
-      "${bower} install bootstrap"
+      "${bower} install"
     ]
   },
   "containers": {
@@ -240,6 +254,27 @@
       "EXPOSE": "3000"
     },
     "services": [
+      {
+        "priority": "21",
+        "name": "logger-service",
+        "parameters": {
+          "#DOMAIN_SERVICE": "logger_service",
+          "#DBPATH": "${dbPath}/logger-db/",
+          "#REPO": "https://github.com/great-design-and-systems/gds-logger.git",
+          "#MAINTAINER": "rickzx98@gmail.com",
+          "#IMAGE_SERVICE_TAG": "0.4"
+        },
+        "mounts": {
+          "/app/log": "${output}/logger-log/",
+          "/data/db": "${dbPath}/logger-db/",
+          "/app/scripts-es6/": "${output}/scripts/",
+          "/host/node_modules/": "${output}/node_modules/",
+          "/host/bower_components/": "${output}/bower_components/"
+        },
+        "docker": {
+          "cmd": "npm run container-start"
+        }
+      },
       {
         "priority": "20",
         "name": "user-service",
@@ -458,7 +493,8 @@
           "file_service",
           "export_service",
           "import_service",
-          "school_config_service"
+          "school_config_service",
+          "logger_service"
         ],
         "port": "9000:3000",
         "mounts": {
